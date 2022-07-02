@@ -32,28 +32,28 @@ const Footer = () => {
 								that enters your mouth.
 							</p>
 							<nav className='nav social social-white'>
-								<a href='#'>
-									<i className=''>
+								<a href='https://www.facebook.com/ReverseFactor/'>
+									<i>
 										<FaFacebookF />
 									</i>
 								</a>
-								<a href='#'>
-									<i className=''>
+								<a href='https://www.youtube.com/channel/UCEm7GOYabdB1WskmOFY4yIg?view_as=subscriber'>
+									<i>
 										<FaYoutube />
 									</i>
 								</a>
-								<a href='#'>
-									<i className=''>
+								<a href='https://www.linkedin.com/company/14545715/admin/'>
+									<i>
 										<FaLinkedin />
 									</i>
 								</a>
-								<a href='#'>
-									<i className=''>
+								<a href='https://www.instagram.com/reverse_factor/'>
+									<i>
 										<FaInstagram />
 									</i>
 								</a>
-								<a href='#'>
-									<i className=''>
+								<a href='https://twitter.com/reverse_factor?lang=en'>
+									<i>
 										<FaTwitter />
 									</i>
 								</a>

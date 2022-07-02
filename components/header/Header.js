@@ -2,8 +2,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import {
+	FaFacebookF,
+	FaYoutube,
+	FaLinkedin,
+	FaInstagram,
+	FaTwitter,
+} from 'react-icons/fa';
 
 const Header = () => {
+	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<header className='wrapper'>
 			<nav
@@ -22,14 +30,15 @@ const Header = () => {
 						</Link>
 					</div>
 					<div
-						className='navbar-collapse offcanvas offcanvas-nav offcanvas-start show'
-						// style={{ visibility: 'visible', height: '100vh' }}
-					>
+						className={`navbar-collapse offcanvas offcanvas-nav offcanvas-start ${
+							showMenu ? 'show' : ''
+						}`}>
 						<div className='offcanvas-header pb-0 d-lg-none'>
 							<h3 className='text-white fs-30 mb-0 invisible'>ReverseFactor</h3>
 							<button
 								type='button'
-								className='btn-close btn-close-white'></button>
+								className='btn-close btn-close-white'
+								onClick={() => setShowMenu(false)}></button>
 						</div>
 						<div className='offcanvas-body ms-lg-auto d-flex flex-column h-100'>
 							<ul className='navbar-nav'>
@@ -64,30 +73,38 @@ const Header = () => {
 							<div className='offcanvas-footer d-lg-none'>
 								<div>
 									<a
-										href='cdn-cgi/l/email-protection.html#b1d7d8c3c2c59fddd0c2c5f1d4dcd0d8dd9fd2dedc'
+										href='mailto:health@reversefactor.in'
 										className='link-inverse'>
-										<span
-											className='__cf_email__'
-											data-cfemail='bbd2d5ddd4fbded6dad2d795d8d4d6'>
-											[email&#160;protected]
+										<span className='__cf_email__'>
+											health@reversefactor.in
 										</span>
 									</a>
-									<br /> 00 (123) 456 78 90 <br />
+									<br /> +91 8100-550-660 <br />
 									<nav className='nav social social-white mt-4'>
-										<a href='#'>
-											<i className='uil uil-twitter'></i>
+										<a href='https://www.facebook.com/ReverseFactor/'>
+											<i>
+												<FaFacebookF />
+											</i>
 										</a>
-										<a href='#'>
-											<i className='uil uil-facebook-f'></i>
+										<a href='https://www.youtube.com/channel/UCEm7GOYabdB1WskmOFY4yIg?view_as=subscriber'>
+											<i>
+												<FaYoutube />
+											</i>
 										</a>
-										<a href='#'>
-											<i className='uil uil-dribbble'></i>
+										<a href='https://www.linkedin.com/company/14545715/admin/'>
+											<i>
+												<FaLinkedin />
+											</i>
 										</a>
-										<a href='#'>
-											<i className='uil uil-instagram'></i>
+										<a href='https://www.instagram.com/reverse_factor/'>
+											<i>
+												<FaInstagram />
+											</i>
 										</a>
-										<a href='#'>
-											<i className='uil uil-youtube'></i>
+										<a href='https://twitter.com/reverse_factor?lang=en'>
+											<i>
+												<FaTwitter />
+											</i>
 										</a>
 									</nav>
 								</div>
@@ -103,7 +120,9 @@ const Header = () => {
 								</a>
 							</li>
 							<li className='nav-item d-lg-none'>
-								<button className='hamburger offcanvas-nav-btn'>
+								<button
+									className='hamburger offcanvas-nav-btn'
+									onClick={() => setShowMenu(true)}>
 									<span></span>
 								</button>
 							</li>
@@ -111,6 +130,13 @@ const Header = () => {
 					</div>
 				</div>
 			</nav>
+
+			<style jsx>{`
+				.show {
+					visibility: visible !important;
+					height: 100vh !important;
+				}
+			`}</style>
 		</header>
 	);
 };
