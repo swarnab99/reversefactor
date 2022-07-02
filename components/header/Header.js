@@ -41,7 +41,7 @@ const Header = () => {
 								onClick={() => setShowMenu(false)}></button>
 						</div>
 						<div className='offcanvas-body ms-lg-auto d-flex flex-column h-100'>
-							<ul className='navbar-nav'>
+							<ul className='navbar-nav' onClick={() => setShowMenu(false)}>
 								<MenuItem />
 								{/* <li className='nav-item dropdown'>
 									<a
