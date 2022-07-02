@@ -22,7 +22,7 @@ const BlogsSection = () => {
 
 const BlogItem = () => {
 	return (
-		<div className='col-4'>
+		<div className='col-lg-4 mb-10'>
 			<article>
 				<figure className='overlay overlay-1 hover-scale rounded mb-5'>
 					<a href='#'>

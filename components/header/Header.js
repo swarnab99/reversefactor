@@ -7,7 +7,7 @@ const Header = () => {
 	return (
 		<header className='wrapper'>
 			<nav
-				className='navbar navbar-expand-lg classic transparent navbar-light _fixed _navbar-stick _position-fixed'
+				className='navbar navbar-expand-lg classic transparent navbar-light fixed navbar-stick position-fixed bg-white'
 				style={{ top: 0 }}>
 				<div className='container-fluid flex-lg-row flex-nowrap align-items-center'>
 					<div className='navbar-brand w-100'>
@@ -21,14 +21,15 @@ const Header = () => {
 							</a>
 						</Link>
 					</div>
-					<div className='navbar-collapse offcanvas offcanvas-nav offcanvas-start'>
-						<div className='offcanvas-header d-lg-none'>
-							<h3 className='text-white fs-30 mb-0'>Sandbox</h3>
+					<div
+						className='navbar-collapse offcanvas offcanvas-nav offcanvas-start show'
+						// style={{ visibility: 'visible', height: '100vh' }}
+					>
+						<div className='offcanvas-header pb-0 d-lg-none'>
+							<h3 className='text-white fs-30 mb-0 invisible'>ReverseFactor</h3>
 							<button
 								type='button'
-								className='btn-close btn-close-white'
-								data-bs-dismiss='offcanvas'
-								aria-label='Close'></button>
+								className='btn-close btn-close-white'></button>
 						</div>
 						<div className='offcanvas-body ms-lg-auto d-flex flex-column h-100'>
 							<ul className='navbar-nav'>

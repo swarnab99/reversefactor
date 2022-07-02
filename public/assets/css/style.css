@@ -339,7 +339,8 @@ svg {
 	line-height: 1;
 	vertical-align: unset;
 }
-.options svg, .icon-list svg {
+.options svg,
+.icon-list svg {
 	height: 100%;
 }
 
@@ -28802,8 +28803,6 @@ button:focus {
 }
 @media (max-width: 991.98px) {
 	.navbar-expand-lg .navbar-brand {
-		padding-top: 1.2rem;
-		padding-bottom: 1.2rem;
 	}
 }
 @media (max-width: 991.98px) {
@@ -31351,9 +31350,9 @@ button.hamburger:before {
 }
 .btn-close:before {
 	background: rgba(0, 0, 0, 0.08);
-	font-family: Unicons;
+	font-family: revert;
 	font-size: 1.05rem;
-	content: '\ed3b';
+	content: 'X';
 	width: 1.8rem;
 	height: 1.8rem;
 	line-height: 1.8rem;

@@ -3,8 +3,8 @@
 const HeroSection = () => {
 	return (
 		<section className='mt-5'>
-			<div className='container pt-8 pt-md-14'>
-				<div className='row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-18 align-items-center'>
+			<div className='container pt-14 pt-md-14'>
+				<div className='row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 align-items-center'>
 					{/* <div className='col-md-8 offset-md-2 col-lg-6 offset-lg-1 position-relative order-lg-2'>
 						<div
 							className='shape bg-dot primary rellax w-17 h-19'

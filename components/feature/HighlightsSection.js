@@ -5,7 +5,7 @@ const HighlightsSection = ({ image }) => {
 			<div>
 				<div className='row '>
 					<div className=''>
-						<img src={image} alt='' className='img-flud rounded' />
+						<img src={image} alt='' className='img-fluid rounded' />
 					</div>
 
 					<div className='col-lg-6 d-none'>
