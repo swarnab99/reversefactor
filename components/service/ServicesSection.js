@@ -1,38 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
+import { RichText } from 'prismic-reactjs';
+import { CustomLink, DocLink } from '../../utils/prismicHelpers';
 
-const ServicesSection = ({ show }) => {
+const ServicesSection = ({ slice, show }) => {
+	// console.log(slice);
+	const { heading, subheading } = slice?.primary;
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container pt-10 pt-md-14'>
 				<div className='row text-center'>
 					<div className='col-md-12 col-lg-10 mx-auto'>
-						<h2 className='fs-16 text-uppercase text-muted mb-3'>
-							We Reverse Chronic Diseases with the help of Modern Science
-						</h2>
-						<h3 className='display-4 mb-10 px-xl-10'>
-							Popular Reversal Programs at Reverse Factor
+						<h3 className='fs-16 text-uppercase text-muted mb-3'>
+							{subheading[0]?.text}
 						</h3>
+						<h2 className='display-4 mb-10 px-xl-10'>{heading[0]?.text}</h2>
 					</div>
 				</div>
 
 				<div className='position-relative'>
 					<div
 						className='shape rounded-circle bg-soft-blue rellax w-16 h-16'
-						// style='bottom: -0.5rem; right: -2.2rem; z-index: 0'
 						style={{ bottom: '-0.5rem', right: '-2.2rem', zIndex: 0 }}></div>
 					<div
 						className='shape bg-dot primary rellax w-16 h-17'
-						// style='top: -0.5rem; left: -2.5rem; z-index: 0'
 						style={{ top: '-0.5rem', left: '-2.5rem', zIndex: 0 }}></div>
 					<div className='row gx-md-5 gy-5 text-center'>
-						<ServiceItem title='Diabetes Reversal' />
-						<ServiceItem title='Heart Disease Reversal' />
-						<ServiceItem title='Fatty Liver' />
-						<ServiceItem title='Kidney Care' />
-						<ServiceItem title='Cancer Care' />
-						<ServiceItem title='Pregnancy Care' />
-						<ServiceItem title='Hormonal Imbalance' />
-						<ServiceItem title='Gut Health' />
+						{slice?.items?.map((item, index) => (
+							<ServiceItem key={index} data={item} />
+						))}
 					</div>
 				</div>
 				{show && (
@@ -107,11 +103,13 @@ const ServicesSection = ({ show }) => {
 						</div>
 					</div>
 				)}
-				{/* <div className='text-center mt-5'>
-					<a href='#' className='btn btn-outline-primary mt-2'>
-						View All Reversal Programs
-					</a>
-				</div> */}
+				<div className='text-center mt-5'>
+					<Link href='/services	'>
+						<a className='btn btn-outline-primary mt-2'>
+							View All Reversal Programs
+						</a>
+					</Link>
+				</div>
 			</div>
 		</section>
 	);
@@ -127,34 +125,26 @@ const BadgeItem = ({ title, color }) => {
 	);
 };
 
-const ServiceItem = ({ title }) => {
+const ServiceItem = ({ data }) => {
+	const { icon, title, details, link } = data;
 	return (
 		<div className='col-md-6 col-xl-3'>
 			<div className='card shadow-lg'>
 				<div className='card-body'>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						viewBox='0 0 512 454.6'
-						data-inject-url='https://sandbox.elemisthemes.com/assets/img/icons/lineal/chat-2.svg'
-						className='svg-inject icon-svg icon-svg-md text-green mb-3'>
-						<path
-							className='lineal-fill'
-							d='M131.5 126.8h249V15.2H15.2v256.3h116.3z'></path>
-						<path
-							className='lineal-stroke'
-							d='M496.8 194.4c-8.4 0-15.2 6.8-15.2 15.2v158.3h-29.7c-8.4 0-15.2 6.8-15.2 15.2 0 .5 0 1.1.1 1.6l2.8 27.2-75.7-42.1c-2.3-1.3-4.8-1.9-7.4-1.9H146.7V142h233.8c8.4 0 15.2-6.8 15.2-15.2V15.2c0-8.4-6.8-15.2-15.2-15.2H15.2C6.8 0 0 6.8 0 15.2v256.3c0 8.4 6.8 15.2 15.2 15.2h101v96.4c0 8.4 6.8 15.2 15.2 15.2h221l97.8 54.3c7.3 4.1 16.6 1.4 20.7-5.9 1.5-2.7 2.2-5.9 1.8-9l-4.1-39.5h28.1c8.4 0 15.2-6.8 15.2-15.2V209.6c.1-8.4-6.7-15.2-15.1-15.2zM30.4 256.3V30.4h334.8v81.2H131.5c-8.4 0-15.2 6.8-15.2 15.2v129.5H30.4z'></path>
-						<path
-							className='lineal-stroke'
-							d='M413.8 223.6H214.4c-8.4 0-15.2-6.8-15.2-15.2s6.8-15.2 15.2-15.2h199.4c8.4 0 15.2 6.8 15.2 15.2s-6.8 15.2-15.2 15.2zm0 85.9H214.4c-8.4 0-15.2-6.8-15.2-15.2S206 279 214.4 279h199.4c8.4 0 15.2 6.8 15.2 15.2s-6.8 15.3-15.2 15.3z'></path>
-					</svg>
-					<h4>{title}</h4>
-					<p className='mb-2'>
-						Nulla vitae elit libero, a pharetra augue. Donec id elit non mi
-						porta gravida at eget metus cras justo.
-					</p>
-					<a href='#' className='_more hover link-green'>
-						View Plan
-					</a>
+					<img
+						src={icon?.url}
+						alt={icon?.alt}
+						className='icon-svg icon-svg-md text-green mb-3'
+					/>
+					<h4>{title[0]?.text}</h4>
+					<div className='mb-2'>
+						<RichText render={details} serializeHyperlink={CustomLink} />
+					</div>
+					<DocLink link={link}>
+						<span href='#' className='hover link-green'>
+							View Plan
+						</span>
+					</DocLink>
 				</div>
 			</div>
 		</div>

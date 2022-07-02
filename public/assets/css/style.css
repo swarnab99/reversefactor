@@ -20416,12 +20416,12 @@ h6 {
 .text-line.text-muted:before {
 	background-color: #aab0bc;
 }
-.underline {
+.underline, .lead strong {
 	position: relative;
 	z-index: 2;
 	white-space: nowrap;
 }
-.underline:after {
+.underline:after, .lead strong:after {
 	content: '';
 	display: block;
 	background: rgba(63, 120, 224, 0.12);

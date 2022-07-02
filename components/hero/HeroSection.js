@@ -1,6 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
+import { RichText } from 'prismic-reactjs';
+import { CustomLink, DocLink } from '../../utils/prismicHelpers';
 
-const HeroSection = () => {
+const HeroSection = ({ slice }) => {
+	// console.log(slice);
+	const {
+		heading,
+		description,
+		primary_button_link,
+		primary_button_text,
+		secondary_button_link,
+		secondary_button_text,
+	} = slice?.primary;
 	return (
 		<section className='mt-5'>
 			<div className='container pt-14 pt-md-14'>
@@ -48,23 +59,24 @@ const HeroSection = () => {
 					</div> */}
 
 					<div className='col-lg-10 mx-auto text-center '>
-						<h1 className='display-1 mb-5'>
-							We Believe Chronic Diseases are Reversible and Preventable
-						</h1>
-						<p className='lead fs-25 lh-sm mb-7 px-md-10 px-lg-0'>
-							Reverse your chronic diseases with the{' '}
-							<strong className='underline'>right food & lifestyle</strong>.
-						</p>
+						<h1 className='display-1 mb-5'>{heading[0]?.text}</h1>
+						<div className='lead fs-25 lh-sm mb-7 px-md-10 px-lg-0'>
+							<RichText render={description} serializeHyperlink={CustomLink} />
+						</div>
 						<div className='d-flex justify-content-center'>
 							<span>
-								<a href='#' className='btn btn-lg btn-primary me-2'>
-									Learn More
-								</a>
+								<DocLink link={primary_button_link}>
+									<span href='#' className='btn btn-lg btn-primary me-2'>
+										{primary_button_text[0]?.text}
+									</span>
+								</DocLink>
 							</span>
 							<span>
-								<a href='#' className='btn btn-lg btn-outline-primary'>
-									Get Appointment
-								</a>
+								<DocLink link={secondary_button_link}>
+									<span href='#' className='btn btn-lg btn-outline-primary'>
+										{secondary_button_text[0]?.text}
+									</span>
+								</DocLink>
 							</span>
 						</div>
 					</div>

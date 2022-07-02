@@ -1,46 +1,37 @@
 /* eslint-disable @next/next/no-img-element */
-const HighlightsSection = ({ image }) => {
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+const HighlightsSection = ({ slice }) => {
+	// console.log(slice);
 	return (
 		<div className='container pt-14 pt-md-16'>
 			<div>
 				<div className='row '>
-					<div className=''>
-						<img src={image} alt='' className='img-fluid rounded' />
-					</div>
-
-					<div className='col-lg-6 d-none'>
-						<div className='p-10 p-md-11 p-lg-13'>
-							<div
-								className='swiper-container dots-closer mb-4 swiper-container-1'
-								data-margin='30'
-								data-dots='true'>
-								<div className='swiper swiper-initialized swiper-horizontal swiper-pointer-events'>
-									<div className='swiper-wrapper'>
-										<div className='swiper-slide swiper-slide-active'>
-											<div className='blockquote-details mb-3'>
-												<div className='info ps-0'>
-													<h5 className='mb-1'>
-														Reversing Lifestyle Diseases Workshop
-													</h5>
-													<p className='mb-0'>Online - Zoom</p>
-												</div>
-											</div>
-											<p>
-												Vivamus sagittis lacus vel augue laoreet rutrum faucibus
-												dolor auctor. Vestibulum ligula porta felis euismod
-												semper. Cras justo odio.
-											</p>
-											<button className='btn btn-outline-primary btn-sm'>
-												Know More
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<Carousel
+						emulateTouch={false}
+						swipeable={false}
+						autoPlay
+						interval={3500}
+						infiniteLoop
+						showArrows={true}
+						showIndicators
+						showThumbs={false}>
+						{slice?.items.map((item, index) => (
+							<HighlightItem key={index} data={item} />
+						))}
+					</Carousel>
 				</div>
 			</div>
+		</div>
+	);
+};
+
+const HighlightItem = ({ data }) => {
+	const { image, link } = data;
+	return (
+		<div className='col-12'>
+			<img src={image?.url} alt={image?.alt} className='img-fluid rounded' />
 		</div>
 	);
 };
