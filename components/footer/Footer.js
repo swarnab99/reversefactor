@@ -10,7 +10,7 @@ import {
 const Footer = () => {
 	return (
 		<footer className='bg-navy text-inverse mt-10'>
-			<div className='container pt-15 pt-md-17 pb-13 pb-md-15'>
+			<div className='container pt-10 pt-md-12 pb-10 pb-md-12'>
 				<div className='d-lg-flex flex-row align-items-lg-center'>
 					<h3 className='display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white'>
 						Join our mission by removing medicine from your life.

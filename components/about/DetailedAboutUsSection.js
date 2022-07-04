@@ -1,6 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-const VissionSection = () => {
+import { RichText } from 'prismic-reactjs';
+import { CustomLink } from '../../utils/prismicHelpers';
+
+const DetailedAboutUsSection = ({ slice }) => {
+	// console.log(slice);
+	const { heading, description, subheading, image_1, image_2, image_3 } =
+		slice?.primary;
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container pt-14 pt-md-16'>
@@ -9,54 +15,30 @@ const VissionSection = () => {
 						<div className='row gx-md-5 gy-5'>
 							<div className='col-12'>
 								<figure className='rounded mx-5'>
-									<img
-										src='./assets/img/photos/g8.jpg'
-										srcSet='./assets/img/photos/g8@2x.jpg 2x'
-										alt=''
-									/>
+									<img src={image_1?.url} alt={image_1?.alt} />
 								</figure>
 							</div>
 
 							<div className='col-md-6'>
 								<figure className='rounded'>
-									<img
-										src='./assets/img/photos/g9.jpg'
-										srcSet='./assets/img/photos/g9@2x.jpg 2x'
-										alt=''
-									/>
+									<img src={image_2?.url} alt={image_2?.alt} />
 								</figure>
 							</div>
 
 							<div className='col-md-6'>
 								<figure className='rounded'>
-									<img
-										src='./assets/img/photos/g10.jpg'
-										srcSet='./assets/img/photos/g10@2x.jpg 2x'
-										alt=''
-									/>
+									<img src={image_3?.url} alt={image_3?.alt} />
 								</figure>
 							</div>
 						</div>
 					</div>
 
 					<div className='col-lg-6'>
-						<h2 className='fs-16 text-uppercase text-muted mb-3'>
-							What Makes Us Different?
-						</h2>
-						<h3 className='display-3 mb-10'>Life at Reverse Factor</h3>
-						<p>
-							Etiam porta sem malesuada magna mollis euismod. Praesent commodo
-							cursus magna vel consectetur purus sit amet fermentum. Donec
-							ullamcorper nulla non metus auctor fringilla. Nullam id dolor id
-							nibh ultricies. Cras mattis consectetur purus amet fermentum. Cras
-							mattis consectetur purus amet fermentum.
-						</p>
-						<p>
-							Vestibulum id ligula porta felis euismod semper. Cras mattis
-							consectetur purus sit amet fermentum. Donec ullamcorper nulla non
-							metus auctor fringilla. Nullam id dolor id nibh ultricies. Cras
-							mattis consectetur purus amet fermentum.
-						</p>
+						<h3 className='fs-16 text-uppercase text-muted mb-3'>
+							{subheading[0]?.text}
+						</h3>
+						<h2 className='display-3 mb-10'>{heading[0]?.text}</h2>
+						<RichText render={description} serializeHyperlink={CustomLink} />
 					</div>
 				</div>
 
@@ -131,4 +113,4 @@ const VissionSection = () => {
 	);
 };
 
-export default VissionSection;
+export default DetailedAboutUsSection;

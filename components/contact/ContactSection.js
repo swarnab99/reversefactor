@@ -7,12 +7,14 @@ import {
 	FaTwitter,
 } from 'react-icons/fa';
 
-const ContactSection = () => {
+const ContactSection = ({ slice }) => {
+	// console.log(slice);
+	const { heading } = slice?.primary;
 	return (
 		<section className='wrapper mt-14'>
 			<div className='container'>
 				<div className='mb-10 text-center'>
-					<h2 className='display-4 mb-3 '>Get In Touch</h2>
+					<h2 className='display-4 mb-3 '>{heading[0]?.text}</h2>
 				</div>
 				<div className='row'>
 					<div className='col-xl-10 mx-auto'>

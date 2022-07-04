@@ -47,7 +47,7 @@ class MyDocument extends Document {
 						src={`https://static.cdn.prismic.io/prismic.js?new=true&repo=${process.env.PRISMIC_ID}`}></script>
 					<script
 						defer
-						data-domain={`${process.env.PRISMIC_ID}.com`}
+						data-domain={`${process.env.PRISMIC_ID}.in`}
 						src='https://plausible.io/js/plausible.js'></script>
 				</Head>
 				<body>

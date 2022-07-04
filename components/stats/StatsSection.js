@@ -39,7 +39,7 @@ const StatItem = ({ data }) => {
 				alt={icon?.alt}
 				className='icon-svg icon-svg-md text-primary mb-3'
 			/>
-			<h3 className='counter'>{value?.text}</h3>
+			<h3 className='counter'>{value[0]?.text}</h3>
 			<p>{details[0]?.text}</p>
 		</div>
 	);

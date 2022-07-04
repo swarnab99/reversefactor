@@ -1,21 +1,30 @@
-const SecondaryHeroSection = ({ title, details, button_text }) => {
+import { RichText } from 'prismic-reactjs';
+import { CustomLink, DocLink } from '../../utils/prismicHelpers';
+
+const SecondaryHeroSection = ({ slice }) => {
+	// console.log(slice);
+	const { heading, description, button_text, button_link, background_image } =
+		slice?.primary;
+
 	return (
 		<section
 			className='wrapper image-wrapper bg-image bg-overlay text-white'
 			style={{
-				backgroundImage: `url(https://images.prismic.io/reversefactor/39fd02b6-ac72-411d-84bf-6d0179342e9c_hero-group.jpeg?auto=compress,format)`,
+				backgroundImage: `url(${background_image?.url})`,
 			}}>
 			<div className='container pt-19 pt-md-20 pb-18 pb-md-15 text-center'>
 				<div className='row'>
 					<div className='col-md-8 mx-auto'>
-						<h1 className='display-1 text-white mb-3'>{title}</h1>
-						<p className='lead fs-lg px-md-3 px-lg-7 px-xl-9 px-xxl-10'>
-							{details}
-						</p>
-						{button_text && (
-							<a href='#' className='btn btn-primary mt-2'>
-								{button_text}
-							</a>
+						<h1 className='display-1 text-white mb-3'>{heading[0]?.text}</h1>
+						<div className='lead fs-lg px-md-3 px-lg-7 px-xl-9 px-xxl-10'>
+							<RichText render={description} serializeHyperlink={CustomLink} />
+						</div>
+						{button_text[0]?.text && (
+							<DocLink link={button_link}>
+								<span className='btn btn-primary mt-2'>
+									{button_text[0]?.text}
+								</span>
+							</DocLink>
 						)}
 					</div>
 				</div>

@@ -1,4 +1,8 @@
-const CtaCardSection = () => {
+import { DocLink } from '../../utils/prismicHelpers';
+
+const CtaCardSection = ({ slice }) => {
+	// console.log(slice);
+	const { heading, button_text, button_link } = slice?.primary;
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container pt-14 pt-md-16'>
@@ -7,18 +11,17 @@ const CtaCardSection = () => {
 						<div
 							className='card image-wrapper bg-full bg-image bg-overlay bg-overlay-400'
 							style={{
-								backgroundImage: `url(https://sandbox.elemisthemes.com/assets/img/photos/bg3.jpg)`,
+								backgroundImage: `url(https://images.prismic.io/reversefactor/d61cc4ea-83f4-4edf-baa9-c8e99b7aa178_bg3.jpeg?auto=compress,format)`,
 							}}>
 							<div className='card-body p-6 p-md-11 d-lg-flex flex-row align-items-lg-center justify-content-md-between text-center text-lg-start'>
 								<h3 className='display-6 mb-6 mb-lg-0 pe-lg-10 pe-xl-5 pe-xxl-18 text-white'>
-									We are trusted by over 4000+ clients. Join the Health
-									Revolution Now!
+									{heading[0]?.text}
 								</h3>
-								<a
-									href='#'
-									className='btn btn-white rounded-pill mb-0 text-nowrap'>
-									View Pricing
-								</a>
+								<DocLink link={button_link}>
+									<span className='btn btn-white rounded-pill mb-0 text-nowrap'>
+										{button_text[0]?.text}
+									</span>
+								</DocLink>
 							</div>
 						</div>
 					</div>

@@ -1,30 +1,81 @@
-import SecondaryHeroSection from '../../components/hero/SecondaryHeroSection';
-import VideoFeaturesSection from '../../components/feature/VideoFeaturesSection';
-import FeaturesSection from '../../components/feature/FeaturesSection';
-import CtaSection from '../../components/cta/CtaSection';
-import TestimonialsSections from '../../components/testimonial/TestimonialsSection';
-import CtaCardSection from '../../components/cta/CtaCardSection';
-import FaqSection from '../../components/faq/FaqSection';
+import { useEffect } from 'react';
+import lozad from 'lozad';
+import { Client } from '../../utils/prismicHelpers';
+import { queryRepeatableDocuments } from '../../utils/queries';
+import { SliceZone } from '../../slices';
+import SEO from '../../components/seo/SEO';
 
-const ServicePage = () => {
+// import SecondaryHeroSection from '../../components/hero/SecondaryHeroSection';
+// import VideoFeaturesSection from '../../components/feature/VideoFeaturesSection';
+// import FeaturesSection from '../../components/feature/FeaturesSection';
+// import CtaSection from '../../components/cta/CtaSection';
+// import TestimonialsSections from '../../components/testimonial/TestimonialsSection';
+// import CtaCardSection from '../../components/cta/CtaCardSection';
+// import FaqSection from '../../components/faq/FaqSection';
+
+const ServicePage = ({ doc }) => {
+	// ========== LOZAD INSTANTIATE ==========
+	useEffect(() => {
+		const observer = lozad('.lozad', {
+			rootMargin: '100px 0px', // syntax similar to that of CSS Margin
+		});
+		observer.observe();
+		return () => {};
+	}, [doc?.uid]);
+	// ========== END ==========
 	return (
 		<>
-			<SecondaryHeroSection
-				title='Reverse Your Diabetes with Us'
-				details='Our approach helps people lower blood sugar and lose weight, even while eliminating the need for medications, including insulin.'
-				button_text='Book an Appointment'
+			<SEO
+				doc={doc}
+				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.com/plan/${doc?.uid}`}
 			/>
-			<VideoFeaturesSection />
-			<FeaturesSection
-				subheading='Our Strengths'
-				heading='Why Reverse Factor Works for You ?'
-			/>
-			<CtaSection />
-			<TestimonialsSections />
-			<CtaCardSection />
-			<FaqSection />
+			<SliceZone sliceZone={doc.data.body} />
 		</>
 	);
 };
+
+export async function getStaticPaths() {
+	const documents = await queryRepeatableDocuments(
+		(doc) => doc.type === 'service_page'
+	);
+	return {
+		paths: documents.map((doc) => {
+			return { params: { slug: doc.uid } };
+		}),
+		fallback: 'blocking',
+	};
+}
+
+export async function getStaticProps({
+	preview = null,
+	previewData = {},
+	params,
+}) {
+	const { ref } = previewData;
+
+	const client = Client();
+
+	const doc =
+		(await client.getByUID(
+			'service_page',
+			params.slug,
+			ref ? { ref } : null
+		)) || {};
+
+	if (doc.id == undefined) {
+		return {
+			props: null,
+			notFound: true,
+		};
+	}
+
+	return {
+		props: {
+			doc,
+			preview,
+		},
+		revalidate: 60,
+	};
+}
 
 export default ServicePage;

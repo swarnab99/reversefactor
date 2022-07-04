@@ -1,6 +1,6 @@
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-// import WhatsappButton from '../WhatsappButton';
+import WhatsappButton from '../WhatsappButton';
 
 const DefaultLayout = ({ children }) => {
 	return (
@@ -8,10 +8,7 @@ const DefaultLayout = ({ children }) => {
 			<Header />
 			<div className='main'>{children}</div>
 			<Footer />
-			{/* <WhatsappButton
-				number='+917003793551'
-				text='Hi, Sombit Dey Photography'
-			/> */}
+			<WhatsappButton number='+918100550660' text='Hi, Reverse Factor' />
 		</main>
 	);
 };

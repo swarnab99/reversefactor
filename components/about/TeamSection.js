@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { FaFacebookF, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-const TeamSection = () => {
+const TeamSection = ({ slice }) => {
+	// console.log(slice);
+	const { heading } = slice?.primary;
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container pt-14 pt-md-16'>
@@ -34,10 +35,7 @@ const TeamSection = () => {
 								className='lineal-stroke'
 								d='M279.5 285.7H130.1c-6.1.2-11.2-4.6-11.4-10.7s4.6-11.2 10.7-11.4h150.2c6.1-.2 11.2 4.6 11.4 10.7s-4.6 11.2-10.7 11.4h-.8z'></path>
 						</svg>
-						<h2 className='display-4 mb-3 '>
-							Great Things in business are never done by one person. They are
-							done by a team of people.
-						</h2>
+						<h2 className='display-4 mb-3 '>{heading[0]?.text}</h2>
 					</div>
 				</div>
 
@@ -50,14 +48,9 @@ const TeamSection = () => {
 						style={{ top: '0.5rem', left: '-1.7rem' }}></div>
 					<div className='container mb-6'>
 						<div className='row'>
-							<TeamItem />
-							<TeamItem />
-							<TeamItem />
-							<TeamItem />
-							<TeamItem />
-							<TeamItem />
-							<TeamItem />
-							<TeamItem />
+							{slice?.items?.map((item, index) => (
+								<TeamItem key={index} data={item} />
+							))}
 						</div>
 					</div>
 				</div>
@@ -73,7 +66,8 @@ const TeamSection = () => {
 	);
 };
 
-const TeamItem = () => {
+const TeamItem = ({ data }) => {
+	const { image, name, role } = data;
 	return (
 		<div className='col-lg-3'>
 			<div className='item-inner'>
@@ -81,11 +75,11 @@ const TeamItem = () => {
 					<div className='card-body'>
 						<img
 							className='rounded-circle img-fluid _w-18 mb-4'
-							src='https://i.ibb.co/L5LHC0f/Karan.png'
-							alt=''
+							src={image?.url}
+							alt={image?.alt}
 						/>
-						<h4 className='mb-1'>Karan Kakkad</h4>
-						<div className='meta mb-2'>Founder & CEO</div>
+						<h4 className='mb-1'>{name[0]?.text}</h4>
+						<div className='meta mb-2'>{role[0]?.text}</div>
 					</div>
 				</div>
 			</div>

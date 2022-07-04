@@ -1,17 +1,76 @@
+import { useEffect } from 'react';
+import lozad from 'lozad';
+import { Client } from '../utils/prismicHelpers';
+import PrismicClient from '../utils/prismicClient';
+import gql from 'graphql-tag';
+import { SliceZone } from '../slices';
+import SEO from '../components/seo/SEO';
 import BlogsSection from '../components/blog/BlogsSection';
-import SecondaryHeroSection from '../components/hero/SecondaryHeroSection';
 
-const BlogsPage = () => {
+const BlogsPage = ({ doc, blogPosts }) => {
+	// ========== LOZAD INSTANTIATE ==========
+	useEffect(() => {
+		const observer = lozad('.lozad', {
+			rootMargin: '100px 0px', // syntax similar to that of CSS Margin
+		});
+		observer.observe();
+		return () => {};
+	}, [doc?.uid]);
+	// ========== END ==========
 	return (
 		<>
-			<SecondaryHeroSection
-				title='Tips For Healthy Lifestyle'
-				details='There are many effective things you can do to improve your health. Here are few health and nutrition tips that are actually based on good science.'
-				button_text='Get An Appointment'
+			<SEO
+				doc={doc}
+				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/blog`}
 			/>
-			<BlogsSection />
+			<SliceZone sliceZone={doc.data.body} />
+			<BlogsSection blogPosts={blogPosts} />
 		</>
 	);
 };
+
+export async function getStaticProps({ preview = null, previewData = {} }) {
+	const { ref } = previewData;
+	const client = Client();
+	const doc =
+		(await client.getSingle('blogs_page', ref ? { ref } : null)) || {};
+
+	const pClient = PrismicClient;
+	const blogPosts = await pClient.query({
+		query: gql`
+			query {
+				allBlog_posts(sortBy: published_date_DESC) {
+					edges {
+						node {
+							title
+							description
+							featured_image
+							published_date
+							_meta {
+								uid
+							}
+						}
+					}
+				}
+			}
+		`,
+	});
+
+	if (doc.id == undefined) {
+		return {
+			props: null,
+			notFound: true,
+		};
+	}
+
+	return {
+		props: {
+			doc,
+			blogPosts,
+			preview,
+		},
+		revalidate: 60,
+	};
+}
 
 export default BlogsPage;

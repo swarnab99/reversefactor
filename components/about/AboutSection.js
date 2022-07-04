@@ -17,7 +17,7 @@ const AboutSection = ({ slice }) => {
 					</div>
 					<div className='mt-3'>
 						<DocLink link={button_link}>
-							<span href='#' className='btn btn-primary mt-2'>
+							<span className='btn btn-primary mt-2'>
 								{button_text[0]?.text}
 							</span>
 						</DocLink>
