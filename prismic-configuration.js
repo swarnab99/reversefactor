@@ -11,20 +11,16 @@ export const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
 	if (doc.type === 'home_page') return '/';
-	else if (doc.type === 'about_page') return '/about';
+	else if (doc.type === 'about_page') return '/about-reverse-factor';
+	else if (doc.type === 'contact_page') return '/contact';
+	else if (doc.type === 'how_it_works_page') return '/how-it-works';
+	else if (doc.type === 'our_presence_page') return '/our-presence';
+	else if (doc.type === 'products_page') return '/products';
+	else if (doc.type === 'reversal_stories_page') return '/reversal-stories';
+	else if (doc.type === 'services_page') return '/services';
 	else if (doc.type === 'blogs_page') return '/blog';
 	else if (doc.type === 'blog_post') return `/blog/${doc.uid}`;
-	else if (doc.type === 'booking_page') return '/book';
-	else if (doc.type === 'careers_page') return '/careers';
-	else if (doc.type === 'contact_page') return '/contact';
-	else if (doc.type === 'gallery_page') return '/gallery';
-	else if (doc.type === 'packages_page') return '/packages';
-	else if (doc.type === 'portfolio_details_page')
-		return `/portfolio/${doc.uid}`;
-	else if (doc.type === 'portfolio_page') return `/portfolio`;
-	else if (doc.type === 'reviews_page') return `/reviews`;
-	else if (doc.type === 'service_page') return `/${doc.uid}`;
-	else if (doc.type === 'services_page') return '/services';
+	else if (doc.type === 'service_page') return `/plan/${doc.uid}`;
 
 	return '/';
 };
@@ -32,19 +28,16 @@ export const linkResolver = (doc) => {
 // Additional helper function for Next/Link component
 export const hrefResolver = (doc) => {
 	if (doc.type === 'home_page') return '/';
-	else if (doc.type === 'about_page') return '/about';
+	else if (doc.type === 'about_page') return '/about-reverse-factor';
+	else if (doc.type === 'contact_page') return '/contact';
+	else if (doc.type === 'how_it_works_page') return '/how-it-works';
+	else if (doc.type === 'our_presence_page') return '/our-presence';
+	else if (doc.type === 'products_page') return '/products';
+	else if (doc.type === 'reversal_stories_page') return '/reversal-stories';
+	else if (doc.type === 'services_page') return '/services';
 	else if (doc.type === 'blogs_page') return '/blog';
 	else if (doc.type === 'blog_post') return `/blog/[slug]`;
-	else if (doc.type === 'booking_page') return '/book';
-	else if (doc.type === 'careers_page') return '/careers';
-	else if (doc.type === 'contact_page') return '/contact';
-	else if (doc.type === 'gallery_page') return '/gallery';
-	else if (doc.type === 'packages_page') return '/packages';
-	else if (doc.type === 'portfolio_details_page') return `/portfolio/[slug]`;
-	else if (doc.type === 'portfolio_page') return `/portfolio`;
-	else if (doc.type === 'reviews_page') return `/reviews`;
-	else if (doc.type === 'service_page') return `/[slug]`;
-	else if (doc.type === 'services_page') return '/services';
+	else if (doc.type === 'service_page') return `/plan/[slug]`;
 
 	return '/';
 };
