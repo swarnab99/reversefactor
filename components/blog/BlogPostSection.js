@@ -1,8 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { FiEye, FiUser, FiCalendar } from 'react-icons/fi';
+import { useState, useEffect } from 'react';
+import { RichText } from 'prismic-reactjs';
+import { linkResolver } from '../../prismic-configuration';
+import dayjs from 'dayjs';
+dayjs().format();
+import countapi from 'countapi-js';
 
-const BlogPostSection = () => {
+const BlogPostSection = ({ blogPost }) => {
+	// console.log(blogPost);
+	const uid = blogPost?.uid;
+	const { title, description, featured_image, published_date, body } =
+		blogPost?.data;
+
+	/* ===== COUNT & UPDATE NO. OF VIEWS ===== */
+	const [views, setViews] = useState(0);
+	useEffect(() => {
+		countapi.hit(`${process.env.PRISMIC_ID}.com`, uid).then((result) => {
+			result?.value && setViews(result.value);
+		});
+	}, [uid]);
+	/* ===== END ===== */
 	return (
 		<>
 			<section className='wrapper bg-soft-primary'>
@@ -10,21 +29,20 @@ const BlogPostSection = () => {
 					<div className='row'>
 						<div className='col-md-10 col-xl-8 mx-auto'>
 							<div className='post-header'>
-								<div className='post-category text-line'>
+								{/* <div className='post-category text-line'>
 									<a href='#' className='hover' rel='category'>
 										NUTRITION
 									</a>
-								</div>
+								</div> */}
 
-								<h1 className='display-1 mb-4'>
-									27 Health and Nutrition Tips That Are Actually Evidence-Based
-								</h1>
+								<h1 className='display-1 mt-8 mb-3'>{title[0]?.text}</h1>
+								<p className='mb-3'>{description[0]?.text}</p>
 								<ul className='post-meta mb-5'>
 									<li className='post-date'>
 										<i className=''>
 											<FiCalendar />
 										</i>
-										<span>5 May 2022</span>
+										<span> {dayjs(published_date).format('DD MMM, YYYY')}</span>
 									</li>
 									<li className='post-author'>
 										<i className=''>
@@ -36,7 +54,7 @@ const BlogPostSection = () => {
 										<i className=''>
 											<FiEye />
 										</i>
-										300
+										{views}
 										<span> Views</span>
 									</li>
 								</ul>
@@ -49,136 +67,22 @@ const BlogPostSection = () => {
 			<section className='wrapper bg-light'>
 				<div className='container pb-14 pb-md-16'>
 					<div className='row'>
-						<div className='col-lg-10 mx-auto'>
+						<div className='col-lg-10 mx-auto p-0'>
 							<div className='blog single mt-n17'>
 								<div className='card'>
 									<figure className='card-img-top'>
-										<img src='assets/img/photos/b1.jpg' alt='' />
+										<img src={featured_image?.url} alt={featured_image?.alt} />
 									</figure>
-									<div className='card-body'>
+									<div className='card-body p-2 px-lg-12 py-lg-10'>
 										<div className='classic-view'>
 											<article className='post'>
-												<div className='post-content mb-5'>
-													<h2 className='h1 mb-4'>1. Limit sugary drinks</h2>
-													<p>
-														Sugary drinks like sodas, fruit juices, and
-														sweetened teas are the primary source of added sugar
-														in the American diet.
-													</p>
-													<p>
-														Donec sed odio dui consectetur adipiscing elit.
-														Etiam adipiscing tincidunt elit, eu convallis felis
-														suscipit ut. Phasellus rhoncus tincidunt auctor.
-														Nullam eu sagittis mauris. Donec non dolor ac elit
-														aliquam tincidunt at at sapien. Aenean tortor
-														libero, condimentum ac laoreet vitae, varius tempor
-														nisi. Duis non arcu vel lectus urna mollis ornare
-														vel eu leo.
-													</p>
-													<div className='row g-6 mt-3 mb-10'>
-														<div className='col-md-6'>
-															<figure className='hover-scale rounded cursor-dark'>
-																<a
-																	href='assets/img/photos/b8-full.jpg'
-																	data-glightbox='title: Heading; description: Purus Vulputate Sem Tellus Quam'
-																	data-gallery='post'>
-																	{' '}
-																	<img src='assets/img/photos/b8.jpg' alt='' />
-																</a>
-															</figure>
-														</div>
-
-														<div className='col-md-6'>
-															<figure className='hover-scale rounded cursor-dark'>
-																<a
-																	href='assets/img/photos/b9-full.jpg'
-																	data-glightbox
-																	data-gallery='post'>
-																	{' '}
-																	<img src='assets/img/photos/b9.jpg' alt='' />
-																</a>
-															</figure>
-														</div>
-
-														<div className='col-md-6'>
-															<figure className='hover-scale rounded cursor-dark'>
-																<a
-																	href='assets/img/photos/b10-full.jpg'
-																	data-glightbox
-																	data-gallery='post'>
-																	{' '}
-																	<img src='assets/img/photos/b10.jpg' alt='' />
-																</a>
-															</figure>
-														</div>
-
-														<div className='col-md-6'>
-															<figure className='hover-scale rounded cursor-dark'>
-																<a
-																	href='assets/img/photos/b11-full.jpg'
-																	data-glightbox
-																	data-gallery='post'>
-																	{' '}
-																	<img src='assets/img/photos/b11.jpg' alt='' />
-																</a>
-															</figure>
-														</div>
-													</div>
-
-													<p>
-														Maecenas sed diam eget risus varius blandit sit amet
-														non magna. Cum sociis natoque penatibus et magnis
-														dis parturient montes, nascetur ridiculus mus. Donec
-														sed odio dui. Nulla vitae elit libero, a pharetra
-														augue. Maecenas faucibus mollis interdum. Donec id
-														elit non mi porta gravida at eget metus. Nullam quis
-														risus eget urna mollis ornare vel eu leo. Lorem
-														ipsum dolor sit amet, consectetur adipiscing elit.
-														Sed posuere consectetur est at lobortis. Cras mattis
-														consectetur purus sit amet fermentum. Praesent
-														commodo cursus magna.
-													</p>
-													<blockquote className='fs-lg my-8'>
-														<p>
-															Sed posuere consectetur est at lobortis. Lorem
-															ipsum dolor sit amet, consectetur adipiscing elit.
-															Duis mollis, est non commodo luctus, nisi erat
-															porttitor ligula lacinia odio sem nec elit purus.
-														</p>
-														<footer className='blockquote-footer'>
-															Very important person
-														</footer>
-													</blockquote>
-													<h3 className='h2 mb-4'>
-														Sit Vulputate Bibendum Purus
-													</h3>
-													<p>
-														Fusce dapibus, tellus ac cursus commodo, tortor
-														mauris condimentum nibh, ut fermentum massa justo
-														sit amet risus. Aenean lacinia bibendum nulla sed
-														consectetur. Cras mattis consectetur purus sit amet
-														fermentum. Praesent commodo cursus magna, vel
-														scelerisque nisl consectetur et. Vestibulum id
-														ligula porta felis euismod semper.
-													</p>
-													<p>
-														Fusce dapibus, tellus ac cursus commodo, tortor
-														mauris condimentum nibh, ut fermentum massa justo
-														sit amet risus. Donec sed odio dui. Cras justo odio,
-														dapibus ac facilisis in, egestas eget quam. Fusce
-														dapibus, tellus ac cursus commodo, tortor mauris
-														condimentum nibh, ut fermentum massa justo sit amet
-														risus. Sed posuere consectetur est at lobortis.
-														Donec id elit non mi porta gravida at eget metus.
-														Nulla vitae elit libero, a pharetra augue. Cum
-														sociis natoque penatibus et magnis dis parturient
-														montes, nascetur ridiculus mus. Fusce dapibus,
-														tellus ac cursus commodo, tortor mauris condimentum
-														nibh.
-													</p>
+												<div className='post-content'>
+													{body &&
+														body.map((item, index) => (
+															<DetailsBox key={index} postBlock={item} />
+														))}
 												</div>
-
-												<div className='post-footer d-md-flex flex-md-row justify-content-md-between align-items-center mt-8'>
+												{/* <div className='post-footer d-md-flex flex-md-row justify-content-md-between align-items-center mt-8'>
 													<div>
 														<ul className='list-unstyled tag-list mb-0'>
 															<li>
@@ -204,7 +108,7 @@ const BlogPostSection = () => {
 															</li>
 														</ul>
 													</div>
-												</div>
+												</div> */}
 											</article>
 										</div>
 
@@ -265,6 +169,31 @@ const BlogPostSection = () => {
 				</div>
 			</section>
 		</>
+	);
+};
+
+const DetailsBox = ({ postBlock }) => {
+	// console.log(postBlock);
+	return (
+		<div className='post-block mx-auto p-0'>
+			<RichText
+				render={postBlock?.primary?.details}
+				linkResolver={linkResolver}
+			/>
+
+			<div className='mb-5 row'>
+				{postBlock?.items &&
+					postBlock?.items.map((item, index) => (
+						<div key={index} className='mb-4 col-md-6'>
+							<img
+								className='img-fluid lozad'
+								data-src={item?.image?.url}
+								alt={item?.image?.alt}
+							/>
+						</div>
+					))}
+			</div>
+		</div>
 	);
 };
 

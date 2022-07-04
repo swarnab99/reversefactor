@@ -1,10 +1,45 @@
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
 import { RichText } from 'prismic-reactjs';
 import { CustomLink } from '../../utils/prismicHelpers';
+import FsLightbox from 'fslightbox-react';
+import lozad from 'lozad';
 
 const SpeakersSection = ({ slice }) => {
-	console.log(slice);
+	// console.log(slice);
 	const { heading } = slice?.primary;
+
+	const [sources, setSources] = useState([]);
+	// ===== SLIDE STATE =====
+	const [lightboxController, setLightboxController] = useState({
+		toggler: false,
+		slide: 1,
+	});
+	// ===== HANDLE SLIDE NUMBER =====
+	const openLightboxOnSlide = (number) => {
+		setLightboxController({
+			toggler: !lightboxController.toggler,
+			slide: number,
+		});
+	};
+	// ===== GET STRUCTURED SOURCES =====
+	useEffect(() => {
+		const observer = lozad('.lozad', {
+			rootMargin: '100px 0px', // syntax similar to that of CSS Margin
+		});
+		observer.observe();
+
+		let tempSources = [];
+		slice.items.map((item) => {
+			item.video_link.link_type == 'Web'
+				? tempSources.push(item?.video_link?.url)
+				: tempSources.push(item?.image?.url);
+		});
+		setSources(tempSources);
+		return () => {
+			setSources([]);
+		};
+	}, [slice]);
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container pt-14 pt-md-16'>
@@ -16,18 +51,35 @@ const SpeakersSection = ({ slice }) => {
 
 				<div className='row grid-view gx-md-8 gx-xl-10 gy-8 gy-lg-0'>
 					{slice?.items?.map((item, index) => (
-						<SpeakerItem key={index} data={item} />
+						<SpeakerItem
+							key={index}
+							data={item}
+							index={index}
+							openLightboxOnSlide={openLightboxOnSlide}
+						/>
 					))}
 				</div>
 			</div>
+
+			<FsLightbox
+				toggler={lightboxController.toggler}
+				sources={sources}
+				slide={lightboxController.slide}
+			/>
 		</section>
 	);
 };
 
-const SpeakerItem = ({ data }) => {
+const SpeakerItem = ({ data, index, openLightboxOnSlide }) => {
 	const { image, name, video_link, details } = data;
 	return (
-		<div className='col-md-6 col-lg-3'>
+		<div
+			className='col-md-6 col-lg-3'
+			onClick={() => {
+				if (video_link?.url) {
+					openLightboxOnSlide(index + 1);
+				}
+			}}>
 			<div className='position-relative'>
 				<div
 					className='shape rounded bg-soft-blue rellax d-md-block'

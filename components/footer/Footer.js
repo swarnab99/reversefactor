@@ -42,7 +42,7 @@ const Footer = () => {
 										<FaYoutube />
 									</i>
 								</a>
-								<a href='https://www.linkedin.com/company/14545715/admin/'>
+								<a href='https://www.linkedin.com/company/14545715'>
 									<i>
 										<FaLinkedin />
 									</i>
