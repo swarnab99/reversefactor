@@ -13,9 +13,7 @@ const PricingSection = ({ slice }) => {
 						<h3 className='fs-15 text-uppercase text-muted mb-3'>
 							{subheading[0]?.text}
 						</h3>
-						<h2 className='display-4 mb-15 mb-md-6 px-lg-10'>
-							{heading[0]?.text}
-						</h2>
+						<h2 className='display-4 px-lg-10'>{heading[0]?.text}</h2>
 					</div>
 				</div>
 

@@ -8,7 +8,7 @@ const CtaFormSection = ({ slice }) => {
 		<section className='wrapper bg-light'>
 			<div className='container pt-14 pt-md-16'>
 				<div className='card bg-soft-primary'>
-					<div className='card-body p-12'>
+					<div className='card-body p-4 p-md-12'>
 						<div className='row gx-md-8 gx-xl-12 gy-10'>
 							<div className='col-lg-6'>
 								<svg

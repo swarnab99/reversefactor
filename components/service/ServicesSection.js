@@ -7,8 +7,8 @@ const ServicesSection = ({ slice, show }) => {
 	// console.log(slice);
 	const { heading, subheading } = slice?.primary;
 	return (
-		<section className='wrapper bg-light'>
-			<div className='container pt-10 pt-md-14'>
+		<section className='wrapper pt-14 bg-light'>
+			<div className='container'>
 				<div className='row text-center'>
 					<div className='col-md-12 col-lg-10 mx-auto'>
 						<h3 className='fs-16 text-uppercase text-muted mb-3'>

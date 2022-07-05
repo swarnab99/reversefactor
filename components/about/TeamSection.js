@@ -74,7 +74,7 @@ const TeamItem = ({ data }) => {
 				<div className='card'>
 					<div className='card-body'>
 						<img
-							className='rounded-circle img-fluid _w-18 mb-4'
+							className='rounded-circle w-100 mb-4'
 							src={image?.url}
 							alt={image?.alt}
 						/>

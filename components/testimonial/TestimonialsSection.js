@@ -8,8 +8,8 @@ const TestimonialsSections = ({ slice }) => {
 	// console.log(slice);
 	const { heading, subheading } = slice?.primary;
 	return (
-		<section className='wrapper bg-light'>
-			<div className='container py-14 py-lg-16 pb-lg-0'>
+		<section className='wrapper pt-14 bg-light'>
+			<div className='container'>
 				<div className='row mb-3'>
 					<div className='col-md-10 col-lg-12 col-xl-10 col-xxl-9 mx-auto text-center'>
 						<h3 className='fs-15 text-uppercase text-muted mb-3'>
@@ -41,7 +41,7 @@ const TestimonialItem = ({ data }) => {
 	const { image, name, review, location } = data;
 	return (
 		<div className='row gx-lg-8 gx-xl-0 align-items-center'>
-			<div className='col-lg-5 col-xl-4 offset-xl-1 d-none d-lg-flex position-relative'>
+			<div className='col-lg-5 col-xl-4 offset-xl-1 d-lg-flex position-relative'>
 				<div
 					className='shape rounded-circle bg-soft-primary rellax w-21 h-21'
 					data-rellax-speed='1'

@@ -9,8 +9,8 @@ import { FiCalendar, FiEye } from 'react-icons/fi';
 const BlogsSection = ({ blogPosts }) => {
 	// console.log(blogPosts);
 	return (
-		<section className='wrapper bg-light'>
-			<div className='container py-14 py-md-16'>
+		<section className='wrapper mt-14 bg-light'>
+			<div className='container'>
 				<h2 className='display-4 mb-10 text-center'>Recent Blog Posts</h2>
 				{/* <p className='lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0'>
 					Here are the latest tips from our blog that got the most attention.

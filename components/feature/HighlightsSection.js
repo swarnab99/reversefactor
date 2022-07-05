@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { DocLink } from '../../utils/prismicHelpers';
 
 const HighlightsSection = ({ slice }) => {
 	// console.log(slice);
@@ -31,7 +32,9 @@ const HighlightItem = ({ data }) => {
 	const { image, link } = data;
 	return (
 		<div className='col-12'>
-			<img src={image?.url} alt={image?.alt} className='img-fluid rounded' />
+			<DocLink link={link}>
+				<img src={image?.url} alt={image?.alt} className='img-fluid rounded' />
+			</DocLink>
 		</div>
 	);
 };
