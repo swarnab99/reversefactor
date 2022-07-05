@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import {
 	FaFacebookF,
 	FaYoutube,
@@ -15,9 +16,11 @@ const Footer = () => {
 					<h3 className='display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white'>
 						Join our mission by removing medicine from your life.
 					</h3>
-					<a href='#' className='btn btn-primary mb-0 text-nowrap'>
-						Contact Us to Know More
-					</a>
+					<Link href='/contact'>
+						<a className='btn btn-primary mb-0 text-nowrap'>
+							Contact Us to Know More
+						</a>
+					</Link>
 				</div>
 
 				<hr className='mt-11 mb-12' />
@@ -64,8 +67,11 @@ const Footer = () => {
 					<div className='col-md-4 col-lg-2'>
 						<div className='widget'>
 							<h4 className='widget-title text-white mb-3'>Get in Touch</h4>
-							<a href='mailto:#'>health@reversefactor.in</a>
-							<br /> +91 8100-550-660
+							<a href='mailto:health@reversefactor.in'>
+								health@reversefactor.in
+							</a>
+							<br />
+							<a href='tel:+918100550660'>+91 8100-550-660</a>
 						</div>
 					</div>
 
@@ -74,19 +80,29 @@ const Footer = () => {
 							<h4 className='widget-title text-white mb-3'>Learn More</h4>
 							<ul className='list-unstyled  mb-0'>
 								<li>
-									<a href='#'>About Us</a>
+									<Link href='/about'>
+										<a>About Us</a>
+									</Link>
 								</li>
 								<li>
-									<a href='#'>Our Porgrams</a>
+									<Link href='/services'>
+										<a>Our Plans</a>
+									</Link>
 								</li>
 								<li>
-									<a href='#'>Reversal Stories</a>
+									<Link href='/about'>
+										<a>Reversal Stories</a>
+									</Link>
 								</li>
 								<li>
-									<a href='#'>Terms of Use</a>
+									<Link href='/terms-and-conditions'>
+										<a>Terms of Use</a>
+									</Link>
 								</li>
 								<li>
-									<a href='#'>Privacy Policy</a>
+									<Link href='/privacy-policy'>
+										<a>Privacy Policy</a>
+									</Link>
 								</li>
 							</ul>
 						</div>
