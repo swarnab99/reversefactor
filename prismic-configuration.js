@@ -19,7 +19,7 @@ export const linkResolver = (doc) => {
 	else if (doc.type === 'reversal_stories_page') return '/reversal-stories';
 	else if (doc.type === 'services_page') return '/services';
 	else if (doc.type === 'blogs_page') return '/blog';
-	else if (doc.type === 'blog_post') return `/blog/${doc.uid}`;
+	else if (doc.type === 'blog_post') return `/${doc.uid}`;
 	else if (doc.type === 'service_page') return `/plan/${doc.uid}`;
 
 	return '/';
@@ -36,7 +36,7 @@ export const hrefResolver = (doc) => {
 	else if (doc.type === 'reversal_stories_page') return '/reversal-stories';
 	else if (doc.type === 'services_page') return '/services';
 	else if (doc.type === 'blogs_page') return '/blog';
-	else if (doc.type === 'blog_post') return `/blog/[slug]`;
+	else if (doc.type === 'blog_post') return `/[slug]`;
 	else if (doc.type === 'service_page') return `/plan/[slug]`;
 
 	return '/';
