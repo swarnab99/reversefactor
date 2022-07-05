@@ -46,7 +46,6 @@ const CtaFormSection = ({ slice }) => {
 													className='form-control border-0'
 													placeholder='Jane'
 													required='required'
-													data-error='First Name is required.'
 												/>
 												<label htmlFor='frm_name'>Name *</label>
 												<div className='invalid-feedback'>
