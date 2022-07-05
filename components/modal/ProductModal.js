@@ -47,7 +47,7 @@ const ProductModal = ({ product, onClose }) => {
 									className='img-fluid rounded'
 								/>
 
-								<button className='btn btn-primary btn-sm w-100'>
+								<button className='btn btn-primary btn-sm w-100 mb-5 mb-md-0'>
 									Query on Whatsapp
 								</button>
 							</div>

@@ -1,12 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import lozad from 'lozad';
 import ProductModal from '../modal/ProductModal';
 
 const ProductsSection = ({ slice }) => {
 	// console.log(slice);
 	const { heading } = slice?.primary;
 	const [activeProduct, setActiveProduct] = useState(null);
+	const [activeCategory, setActiveCategory] = useState('All');
+
+	useEffect(() => {
+		const observer = lozad('.lozad', {
+			rootMargin: '100px 0px', // syntax similar to that of CSS Margin
+		});
+		observer.observe();
+	}, [slice, activeCategory]);
+
+	const categoryOptions = ['All', 'Seeds and Herbs', 'Other'];
 
 	return (
 		<section className='wrapper bg-light'>
@@ -18,10 +28,12 @@ const ProductsSection = ({ slice }) => {
 
 					<div className='col-md-4 col-lg-3 ms-md-auto text-md-end mt-5 mt-md-0'>
 						<div className='form-select-wrapper'>
-							<select className='form-select'>
-								<option value='popularity'>Show All Products</option>
-								<option value='rating'>Seeds & Herbs</option>
-								<option value='rating'>Other</option>
+							<select
+								onChange={(e) => setActiveCategory(e.target.value)}
+								className='form-select'>
+								<option value='All'>Show All Products</option>
+								<option value='Seeds and Herbs'>Seeds & Herbs</option>
+								<option value='Other'>Other</option>
 							</select>
 						</div>
 					</div>
@@ -29,14 +41,18 @@ const ProductsSection = ({ slice }) => {
 
 				<div className='grid grid-view projects-masonry shop mb-13'>
 					<div className='row gx-md-8 gy-10 gy-md-13 isotope'>
-						{slice?.items?.map((item, index) => (
-							<ProductItem
-								key={index}
-								data={item}
-								index={index}
-								changeActive={(val) => setActiveProduct(val)}
-							/>
-						))}
+						{slice?.items?.map(
+							(item, index) =>
+								(activeCategory == 'All' ||
+									activeCategory == item.category) && (
+									<ProductItem
+										key={index}
+										data={item}
+										index={index}
+										changeActive={(val) => setActiveProduct(val)}
+									/>
+								)
+						)}
 					</div>
 				</div>
 			</div>
