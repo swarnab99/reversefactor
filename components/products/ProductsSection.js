@@ -79,7 +79,13 @@ const ProductItem = ({ data, index, changeActive }) => {
 					}
 					alt={image?.alt}
 				/>
-				<span className='item-cart'>Query on Whatsapp</span>
+				<a
+					target='_blank'
+					rel='noreferrer'
+					href={`https://api.whatsapp.com/send?phone=+918100550660&text=Hi,%20Reverse%20Factor. I'm looking for ${title[0]?.text}, please share the details`}
+					className='item-cart'>
+					Query on Whatsapp
+				</a>
 			</figure>
 			<div onClick={() => changeActive(index)} className='post-header'>
 				<h2 className='post-title h3 fs-22'>{title[0]?.text}</h2>

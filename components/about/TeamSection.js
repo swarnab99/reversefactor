@@ -70,12 +70,15 @@ const TeamItem = ({ data }) => {
 	const { image, name, role } = data;
 	return (
 		<div className='col-lg-3'>
-			<div className='item-inner'>
-				<div className='card'>
-					<div className='card-body'>
+			<div className='item-inner h-100'>
+				<div className='card h-100'>
+					<div className='card-body pb-3'>
 						<img
 							className='rounded-circle w-100 mb-4'
-							src={image?.url}
+							src={
+								image?.url ||
+								'https://images.prismic.io/reversefactor/182d1875-b0aa-4c30-8f7f-d98674994f7c_member_placeholder.png?auto=compress,format'
+							}
 							alt={image?.alt}
 						/>
 						<h4 className='mb-1'>{name[0]?.text}</h4>

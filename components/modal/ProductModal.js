@@ -47,9 +47,13 @@ const ProductModal = ({ product, onClose }) => {
 									className='img-fluid rounded'
 								/>
 
-								<button className='btn btn-primary btn-sm w-100 mb-5 mb-md-0'>
+								<a
+									target='_blank'
+									rel='noreferrer'
+									href={`https://api.whatsapp.com/send?phone=+918100550660&text=Hi,%20Reverse%20Factor. I'm looking for ${title[0]?.text}, please share the details`}
+									className='btn btn-primary btn-sm w-100 mb-5 mb-md-0'>
 									Query on Whatsapp
-								</button>
+								</a>
 							</div>
 							<div className='col-md-8'>
 								<RichText render={details} serializeHyperlink={CustomLink} />

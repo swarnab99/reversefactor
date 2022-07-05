@@ -37808,5 +37808,12 @@ footer.bg-dark.angled.upper-start:before {
 	border-radius: 0.4rem;
 	margin-right: 0.5rem !important;
 }
+.note-text p {
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 /*# sourceMappingURL=style.css.map */
