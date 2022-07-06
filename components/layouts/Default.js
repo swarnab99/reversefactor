@@ -8,7 +8,7 @@ const DefaultLayout = ({ children }) => {
 			<Header />
 			<div className='main'>{children}</div>
 			<Footer />
-			<WhatsappButton number='+918100550660' text='Hi, Reverse Factor' />
+			<WhatsappButton number='+917001848624' text='Hi, Reverse Factor' />
 		</main>
 	);
 };

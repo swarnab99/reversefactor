@@ -82,7 +82,7 @@ const ProductItem = ({ data, index, changeActive }) => {
 				<a
 					target='_blank'
 					rel='noreferrer'
-					href={`https://api.whatsapp.com/send?phone=+918100550660&text=Hi,%20Reverse%20Factor. I'm looking for ${title[0]?.text}, please share the details`}
+					href={`https://api.whatsapp.com/send?phone=+917001848624&text=Hi,%20Reverse%20Factor. I'm looking for ${title[0]?.text}, please share the details`}
 					className='item-cart'>
 					Query on Whatsapp
 				</a>

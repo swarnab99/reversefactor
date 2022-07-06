@@ -1,9 +1,41 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
+import FsLightbox from 'fslightbox-react';
 
 const GallerySection = ({ slice }) => {
 	// console.log(slice);
 	const { heading } = slice?.primary;
+
+	const [viewAll, setViewAll] = useState(false);
+
+	const [sources, setSources] = useState([]);
+	// ===== SLIDE STATE =====
+	const [lightboxController, setLightboxController] = useState({
+		toggler: false,
+		slide: 1,
+	});
+	// ===== HANDLE SLIDE NUMBER =====
+	const openLightboxOnSlide = (number) => {
+		setLightboxController({
+			toggler: !lightboxController.toggler,
+			slide: number,
+		});
+	};
+	// ===== GET STRUCTURED SOURCES =====
+	useEffect(() => {
+		let tempSources = [];
+		slice.items.map((item) => {
+			item.video_link.link_type == 'Web'
+				? tempSources.push(item?.video_link?.url)
+				: tempSources.push(item?.image?.url);
+		});
+		setSources(tempSources);
+		return () => {
+			setSources([]);
+		};
+	}, [slice]);
+
 	return (
 		<section className='wrapper bg-light'>
 			<div className='overflow-hidden'>
@@ -17,26 +49,54 @@ const GallerySection = ({ slice }) => {
 					</div>
 
 					<div className='pb-2 row '>
-						{slice?.items?.map((item, index) => (
-							<GalleryItem key={index} data={item} />
-						))}
+						{slice?.items?.map((item, index) => {
+							return viewAll ? (
+								<GalleryItem
+									key={index}
+									data={item}
+									index={index}
+									openLightboxOnSlide={openLightboxOnSlide}
+								/>
+							) : (
+								index < 4 && (
+									<GalleryItem
+										key={index}
+										data={item}
+										index={index}
+										openLightboxOnSlide={openLightboxOnSlide}
+									/>
+								)
+							);
+						})}
 					</div>
-					<div className='text-center'>
-						<a href='#' className='btn btn-outline-primary btn-sm mt-4'>
-							Load More
-						</a>
-					</div>
+					{!viewAll && (
+						<div className='text-center'>
+							<button
+								onClick={() => setViewAll(true)}
+								className='btn btn-outline-primary btn-sm mt-4'>
+								Load More
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
+
+			<FsLightbox
+				toggler={lightboxController.toggler}
+				sources={sources}
+				slide={lightboxController.slide}
+			/>
 		</section>
 	);
 };
 
-const GalleryItem = ({ data }) => {
+const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
 	const { image, title } = data;
 	return (
-		<div className='col-3 px-4'>
-			<article>
+		<div className='col-md-6 col-lg-3 px-4 mb-5'>
+			<article
+				style={{ cursor: 'pointer' }}
+				onClick={() => openLightboxOnSlide(index + 1)}>
 				<div className='card'>
 					<figure className='card-img-top overlay overlay-1'>
 						<img src={image?.url} alt={image?.alt} />

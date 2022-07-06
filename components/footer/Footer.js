@@ -71,7 +71,7 @@ const Footer = () => {
 								health@reversefactor.in
 							</a>
 							<br />
-							<a href='tel:+918100550660'>+91 8100-550-660</a>
+							<a href='tel:+917001848624'>+91 8100-550-660</a>
 						</div>
 					</div>
 
