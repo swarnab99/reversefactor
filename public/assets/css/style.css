@@ -37791,6 +37791,19 @@ footer.bg-dark.angled.upper-start:before {
 .cmb-0 p {
 	margin-bottom: 0 !important;
 }
+.client-story .ellipsis p {
+	display: -webkit-box !important;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.client-story .details {
+	font-size: .8rem;
+	line-height: 1.4rem !important;
+	z-index: 9;
+	position: relative;
+}
 .client-story .details p {
 	display: inline;
 }
