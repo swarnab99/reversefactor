@@ -80,7 +80,7 @@ const Footer = () => {
 							<h4 className='widget-title text-white mb-3'>Learn More</h4>
 							<ul className='list-unstyled  mb-0'>
 								<li>
-									<Link href='/about'>
+									<Link href='/about-reverse-factor'>
 										<a>About Us</a>
 									</Link>
 								</li>

@@ -3,10 +3,15 @@
 import { FiEye, FiUser, FiCalendar } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
 import { RichText } from 'prismic-reactjs';
+import Airtable from 'airtable';
 import { linkResolver } from '../../prismic-configuration';
 import dayjs from 'dayjs';
 dayjs().format();
 import countapi from 'countapi-js';
+
+const base = new Airtable({
+	apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY,
+}).base(process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID);
 
 const BlogPostSection = ({ blogPost }) => {
 	// console.log(blogPost);
@@ -22,6 +27,57 @@ const BlogPostSection = ({ blogPost }) => {
 		});
 	}, [uid]);
 	/* ===== END ===== */
+
+	const [formData, setFormData] = useState({
+		name: '',
+		email: '',
+		comment: '',
+	});
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
+	const [success, setSuccess] = useState(false);
+
+	const handleChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		});
+		setError(null);
+		setSuccess(false);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setLoading(true);
+		try {
+			const data = await base('Blog Queries').create([
+				{
+					fields: {
+						Name: formData.name,
+						Email: formData.email,
+						Comment: formData.comment,
+
+						Source: location.href,
+						Status: 'Todo',
+					},
+				},
+			]);
+
+			// console.log(data);
+
+			setFormData({
+				name: '',
+				email: '',
+				comment: '',
+			});
+			setSuccess(true);
+			setLoading(false);
+		} catch (error) {
+			setError(error);
+			console.log(error);
+			setLoading(false);
+		}
+	};
 	return (
 		<>
 			<section className='wrapper bg-soft-primary'>
@@ -119,49 +175,69 @@ const BlogPostSection = ({ blogPost }) => {
 										<p className='mb-7'>
 											We won't spam you. Required fields are marked *
 										</p>
-										<form className='comment-form'>
+										<form onSubmit={handleSubmit} className='comment-form'>
 											<div className='form-floating mb-4'>
 												<input
 													type='text'
+													name='name'
+													value={formData.name}
+													onChange={handleChange}
+													placeholder='Name'
 													className='form-control'
-													placeholder='Name*'
-													id='c-name'
+													required
 												/>
 												<label htmlFor='c-name'>Name *</label>
 											</div>
 											<div className='form-floating mb-4'>
 												<input
 													type='email'
+													name='email'
+													value={formData.email}
+													onChange={handleChange}
 													className='form-control'
-													placeholder='Email*'
-													id='c-email'
+													placeholder='Email'
+													required
 												/>
 												<label htmlFor='c-email'>Email*</label>
 											</div>
 											<div className='form-floating mb-4'>
-												<input
-													type='text'
-													className='form-control'
-													placeholder='Website'
-													id='c-web'
-												/>
-												<label htmlFor='c-web'>Website</label>
-											</div>
-											<div className='form-floating mb-4'>
 												<textarea
-													name='textarea'
+													name='comment'
+													value={formData.comment}
+													onChange={handleChange}
+													rows='3'
 													className='form-control'
-													placeholder='Comment'
+													placeholder='Type your comment here...'
+													required
 													style={{ height: '150px' }}></textarea>
 												<label>Comment *</label>
 											</div>
 											<button
 												type='submit'
 												className='btn btn-primary rounded-pill mb-0'>
-												Submit
+												{loading ? 'Sending...' : 'Submit'}
 											</button>
 										</form>
 									</div>
+									<footer
+										className={`notification-box mb-50 ${
+											success ? 'show-success' : error ? 'show-error' : ''
+										}`}>
+										{error && (
+											<div className='col-lg-12 col-md-12 col-sm-12 mb-4'>
+												<p className='text-danger text-center h2'>
+													{error.message}
+												</p>
+											</div>
+										)}
+										{success && (
+											<div className='col-lg-12 col-md-12 col-sm-12 mb-4'>
+												<p className='text-success text-center h2'>
+													Thanks, for sharing your valuable thoughts.
+												</p>
+											</div>
+										)}
+									</footer>
 								</div>
 							</div>
 						</div>
