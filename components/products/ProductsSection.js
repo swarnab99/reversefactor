@@ -16,8 +16,6 @@ const ProductsSection = ({ slice }) => {
 		observer.observe();
 	}, [slice, activeCategory]);
 
-	const categoryOptions = ['All', 'Seeds and Herbs', 'Other'];
-
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container py-10'>

@@ -1,9 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
+import WorkshopModal from '../modal/WorkshopModal';
 
 const WorkshopsSection = ({ slice }) => {
 	// console.log(slice);
 	const { heading } = slice?.primary;
+	const [viewAll, setViewAll] = useState(false);
+	const [activeWorkshop, setActiveWorkshop] = useState(null);
+
 	return (
 		<section className='wrapper bg-light'>
 			<div className='overflow-hidden'>
@@ -18,30 +23,61 @@ const WorkshopsSection = ({ slice }) => {
 
 					<div className='col-lg-10 mx-auto'>
 						<div className='pb-2 row '>
-							{slice?.items?.map((item, index) => (
-								<WorkshopItem key={index} data={item} />
-							))}
+							{slice?.items?.map((item, index) => {
+								return viewAll ? (
+									<WorkshopItem
+										key={index}
+										data={item}
+										index={index}
+										changeActive={(val) => setActiveWorkshop(val)}
+									/>
+								) : (
+									index < 4 && (
+										<WorkshopItem
+											key={index}
+											data={item}
+											index={index}
+											changeActive={(val) => setActiveWorkshop(val)}
+										/>
+									)
+								);
+							})}
 						</div>
 					</div>
-					<div className='text-center'>
-						<a href='#' className='btn btn-outline-primary btn-sm mt-4'>
-							Load More
-						</a>
-					</div>
+					{!viewAll && (
+						<div className='text-center'>
+							<button
+								onClick={() => setViewAll(true)}
+								className='btn btn-outline-primary btn-sm mt-4'>
+								Load More
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
+
+			{activeWorkshop != null && (
+				<WorkshopModal
+					workshop={slice?.items[activeWorkshop]}
+					onClose={() => setActiveWorkshop(null)}
+				/>
+			)}
 		</section>
 	);
 };
 
-const WorkshopItem = ({ data }) => {
-	const { title, image } = data;
+const WorkshopItem = ({ data, index, changeActive }) => {
+	const { title, image1 } = data;
+
 	return (
 		<div className='col-6 px-4 mb-6'>
 			<article>
 				<div className='card'>
-					<figure className='card-img-top overlay overlay-1'>
-						<img src={image?.url} alt={image?.alt} />
+					<figure
+						onClick={() => changeActive(index)}
+						// onClick={() => console.log(sources)}
+						className='card-img-top overlay overlay-1'>
+						<img src={image1?.url} alt={image1?.alt} />
 					</figure>
 					<div className='card-body p-1 px-3'>
 						<div className='post-header'>

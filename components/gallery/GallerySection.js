@@ -6,7 +6,6 @@ import FsLightbox from 'fslightbox-react';
 const GallerySection = ({ slice }) => {
 	// console.log(slice);
 	const { heading } = slice?.primary;
-
 	const [viewAll, setViewAll] = useState(false);
 
 	const [sources, setSources] = useState([]);
@@ -96,7 +95,8 @@ const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
 		<div className='col-md-6 col-lg-3 px-4 mb-5'>
 			<article
 				style={{ cursor: 'pointer' }}
-				onClick={() => openLightboxOnSlide(index + 1)}>
+				// onClick={() => openLightboxOnSlide(index + 1)}
+				onClick={() => console.log(sources)}>
 				<div className='card'>
 					<figure className='card-img-top overlay overlay-1'>
 						<img src={image?.url} alt={image?.alt} />
