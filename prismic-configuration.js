@@ -21,7 +21,8 @@ export const linkResolver = (doc) => {
 	else if (doc.type === 'blogs_page') return '/blog';
 	else if (doc.type === 'blog_post') return `/${doc.uid}`;
 	else if (doc.type === 'service_page') return `/plan/${doc.uid}`;
-
+	// ===== FOR EXTERNAL LINK =====
+	else if (doc.link_type === 'Web') return doc?.url;
 	return '/';
 };
 
@@ -38,6 +39,7 @@ export const hrefResolver = (doc) => {
 	else if (doc.type === 'blogs_page') return '/blog';
 	else if (doc.type === 'blog_post') return `/[slug]`;
 	else if (doc.type === 'service_page') return `/plan/[slug]`;
-
+	// ===== FOR EXTERNAL LINK =====
+	else if (doc.link_type === 'Web') return doc?.url;
 	return '/';
 };
