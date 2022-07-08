@@ -37798,6 +37798,16 @@ footer.bg-dark.angled.upper-start:before {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.client-story .ellipsis2 p {
+	display: -webkit-box !important;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-size: 1rem;
+	line-height: 1.6rem !important;
+	text-overflow: ellipsis;
+	margin-bottom: 0px;
+}
 .client-story .details {
 	font-size: .8rem;
 	line-height: 1.4rem !important;

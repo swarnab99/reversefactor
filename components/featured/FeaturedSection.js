@@ -31,7 +31,7 @@ const FeaturedItem = ({ data }) => {
 	const { image } = data;
 	return (
 		<div className='col'>
-			<figure className='px-4 px-lg-3 px-xxl-5'>
+			<figure className='px-4 px-lg-0'>
 				<img src={image?.url} alt={image?.alt} />
 			</figure>
 		</div>

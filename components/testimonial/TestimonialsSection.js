@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { RichText } from 'prismic-reactjs';
@@ -39,6 +40,7 @@ const TestimonialsSections = ({ slice }) => {
 
 const TestimonialItem = ({ data }) => {
 	const { image, name, review, location } = data;
+	const [viewMore, setViewMore] = useState(false);
 	return (
 		<div className='row gx-lg-8 gx-xl-0 align-items-center'>
 			<div className='col-lg-5 col-xl-4 offset-xl-1 d-lg-flex position-relative'>
@@ -47,7 +49,7 @@ const TestimonialItem = ({ data }) => {
 					data-rellax-speed='1'
 					style={{ top: `7rem`, left: `1rem` }}></div>
 				<figure>
-					<img src={image?.url} alt={image?.alt} />
+					<img src={image?.url} alt={image?.alt} className='rounded' />
 				</figure>
 			</div>
 
@@ -56,9 +58,17 @@ const TestimonialItem = ({ data }) => {
 					<div className='swiper'>
 						<div className='swiper-wrapper'>
 							<div className='swiper-slide'>
-								<blockquote className='icon fs-lg'>
-									<div className='text-start'>
+								<blockquote className='icon fs-lg client-story'>
+									<div
+										className={`text-start details mb-4 ${
+											viewMore ? '' : 'ellipsis2'
+										}`}>
 										<RichText render={review} serializeHyperlink={CustomLink} />
+										<button
+											onClick={() => setViewMore(!viewMore)}
+											className='small d-block border-0 bg-light p-0 text-primary'>
+											{viewMore ? 'read less' : 'read more'}&gt;
+										</button>
 									</div>
 									<div className='blockquote-details'>
 										<div className='info ps-0'>
