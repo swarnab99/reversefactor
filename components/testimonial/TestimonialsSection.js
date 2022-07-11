@@ -63,7 +63,12 @@ const TestimonialItem = ({ data }) => {
 										className={`text-start details mb-4 ${
 											viewMore ? '' : 'ellipsis2'
 										}`}>
-										<RichText render={review} serializeHyperlink={CustomLink} />
+										<div className='short'>
+											<RichText
+												render={review}
+												serializeHyperlink={CustomLink}
+											/>
+										</div>
 										<button
 											onClick={() => setViewMore(!viewMore)}
 											className='small d-block border-0 bg-light p-0 text-primary'>
@@ -74,40 +79,6 @@ const TestimonialItem = ({ data }) => {
 										<div className='info ps-0'>
 											<h5 className='mb-1'>{name[0]?.text}</h5>
 											<p className='mb-0'>{location[0]?.text}</p>
-										</div>
-									</div>
-								</blockquote>
-							</div>
-
-							<div className='swiper-slide'>
-								<blockquote className='icon fs-lg'>
-									<p>
-										“Vivamus sagittis lacus vel augue laoreet rutrum faucibus
-										dolor auctor. Vestibulum ligula porta felis euismod semper.
-										Cras justo odio consectetur nulla dapibus curabitur blandit
-										faucibus.”
-									</p>
-									<div className='blockquote-details'>
-										<div className='info ps-0'>
-											<h5 className='mb-1'>Cory Zamora</h5>
-											<p className='mb-0'>Marketing Specialist</p>
-										</div>
-									</div>
-								</blockquote>
-							</div>
-
-							<div className='swiper-slide'>
-								<blockquote className='icon fs-lg'>
-									<p>
-										“Vivamus sagittis lacus vel augue laoreet rutrum faucibus
-										dolor auctor. Vestibulum ligula porta felis euismod semper.
-										Cras justo odio consectetur nulla dapibus curabitur blandit
-										faucibus.”
-									</p>
-									<div className='blockquote-details'>
-										<div className='info ps-0'>
-											<h5 className='mb-1'>Jyoti Karwa</h5>
-											<p className='mb-0'>Assam, India</p>
 										</div>
 									</div>
 								</blockquote>

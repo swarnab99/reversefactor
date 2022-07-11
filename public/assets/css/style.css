@@ -37798,7 +37798,7 @@ footer.bg-dark.angled.upper-start:before {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.client-story .ellipsis2 p {
+.client-story .ellipsis2 .short {
 	display: -webkit-box !important;
 	-webkit-line-clamp: 7;
 	-webkit-box-orient: vertical;
