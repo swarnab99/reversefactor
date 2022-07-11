@@ -28,7 +28,7 @@ const FaqItem = ({ data }) => {
 	const { answer, question } = data;
 	const [show, setShow] = useState(false);
 	return (
-		<div className='col-10 mx-auto mb-0'>
+		<div className='col-md-10 mx-auto mb-0'>
 			<div className='accordion-wrapper'>
 				<div className='card accordion-item'>
 					<div className='card-header' id='accordion-heading-1-1'>

@@ -90,7 +90,7 @@ const Footer = () => {
 									</Link>
 								</li>
 								<li>
-									<Link href='/about'>
+									<Link href='/reversal-stories'>
 										<a>Reversal Stories</a>
 									</Link>
 								</li>
