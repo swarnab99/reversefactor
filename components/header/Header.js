@@ -22,7 +22,7 @@ const Header = () => {
 						<Link href='/'>
 							<a>
 								<img
-									src='https://reversefactor.in/images/rf-logo.png'
+									src='https://images.prismic.io/reversefactor/9873bf14-7b5d-44b3-931c-b1e20e8d693b_rf-logo.png'
 									width={200}
 									alt=''
 								/>
