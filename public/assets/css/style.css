@@ -31801,7 +31801,7 @@ button.hamburger:before {
 	display: flex;
 	flex-shrink: 0;
 	margin-top: auto;
-	padding: 1.5rem 0;
+	padding: 1.5rem 0 4rem;
 }
 img.svg-inject {
 	visibility: hidden;
