@@ -79,7 +79,7 @@ const Header = () => {
 											health@reversefactor.in
 										</span>
 									</a>
-									<br /> +91 8100-550-660 <br />
+									<br /> 8100-550-660 <br />
 									<nav className='nav social social-white mt-4'>
 										<a href='https://www.facebook.com/ReverseFactor/'>
 											<i>
