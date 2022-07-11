@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { RichText } from 'prismic-reactjs';
@@ -39,7 +39,18 @@ const TestimonialsSections = ({ slice }) => {
 };
 
 const TestimonialItem = ({ data }) => {
-	const { image, name, review, location } = data;
+	const { image, name, review, location, reversed_disease } = data;
+	const colors = [
+		'bg-pale-yellow',
+		'bg-pale-red',
+		'bg-pale-green',
+		'bg-pale-blue',
+		'bg-pale-orange',
+		'bg-pale-leaf',
+		'bg-pale-aqua',
+		'bg-pale-navy',
+	];
+	// console.log(reversed_disease);
 	const [viewMore, setViewMore] = useState(false);
 	return (
 		<div className='row gx-lg-8 gx-xl-0 align-items-center'>
@@ -79,6 +90,18 @@ const TestimonialItem = ({ data }) => {
 										<div className='info ps-0'>
 											<h5 className='mb-1'>{name[0]?.text}</h5>
 											<p className='mb-0'>{location[0]?.text}</p>
+											{reversed_disease?.[0] && (
+												<div className='mt-4 d-flex align-items-start justify-content-start'>
+													<h6 className='me-2'>Reversed:</h6>
+													{reversed_disease?.map((item, index) => (
+														<span
+															key={index}
+															className={`badge text-dark me-2 ${colors[index]}`}>
+															{item?.text}
+														</span>
+													))}
+												</div>
+											)}
 										</div>
 									</div>
 								</blockquote>

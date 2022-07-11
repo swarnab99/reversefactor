@@ -129,16 +129,18 @@ const StoryItem = ({ data, even, index, openLightboxOnSlide }) => {
 										<div className='info ps-0'>
 											<h5 className='mb-1'>{name[0]?.text}</h5>
 											<p className='mb-0'>{location[0]?.text}</p>
-											<div className='mt-4 d-flex align-items-start justify-content-center'>
-												<h6 className='me-2'>Reversed:</h6>
-												{reversed_disease?.map((item, index) => (
-													<span
-														key={index}
-														className={`badge text-dark me-2 ${colors[index]}`}>
-														{item?.text}
-													</span>
-												))}
-											</div>
+											{reversed_disease?.[0] && (
+												<div className='mt-4 d-flex align-items-start justify-content-center'>
+													<h6 className='me-2'>Reversed:</h6>
+													{reversed_disease?.map((item, index) => (
+														<span
+															key={index}
+															className={`badge text-dark me-2 ${colors[index]}`}>
+															{item?.text}
+														</span>
+													))}
+												</div>
+											)}
 										</div>
 									</div>
 								</blockquote>

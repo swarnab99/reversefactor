@@ -115,7 +115,11 @@ const Header = () => {
 					<div className='navbar-other ms-lg-4'>
 						<ul className='navbar-nav flex-row align-items-center ms-auto'>
 							<li className='nav-item d-none d-md-block'>
-								<a href='#' className='btn btn-sm btn-primary rounded'>
+								<a
+									href='https://api.whatsapp.com/send?phone=+917001848624&text=Hi,%20Reverse%20Factor. I want to schedule an appointment.'
+									target='_blank'
+									rel='noreferrer'
+									className='btn btn-sm btn-primary rounded'>
 									Get Appointment
 								</a>
 							</li>

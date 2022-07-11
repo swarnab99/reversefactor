@@ -29,9 +29,9 @@ const ProductsSection = ({ slice }) => {
 							<select
 								onChange={(e) => setActiveCategory(e.target.value)}
 								className='form-select'>
-								<option value='All'>Show All Products</option>
-								<option value='Seeds and Herbs'>Seeds & Herbs</option>
-								<option value='Other'>Other</option>
+								<option defaultValue='All'>Show All Products</option>
+								<option defaultValue='Seeds and Herbs'>Seeds & Herbs</option>
+								<option defaultValue='Other'>Other</option>
 							</select>
 						</div>
 					</div>
@@ -89,7 +89,7 @@ const ProductItem = ({ data, index, changeActive }) => {
 				<h2 className='post-title h3 fs-22'>{title[0]?.text}</h2>
 				<p className='price'>
 					{mrp && (
-						<del>
+						<del className='me-3'>
 							<span className='amount'>₹{mrp}</span>
 						</del>
 					)}
