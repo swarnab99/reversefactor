@@ -37809,14 +37809,12 @@ footer.bg-dark.angled.upper-start:before {
 	margin-bottom: 0px;
 }
 .client-story .details {
-	font-size: .8rem;
+	font-size: 0.8rem;
 	line-height: 1.4rem !important;
 	z-index: 9;
 	position: relative;
 }
-.client-story .details p {
-	display: inline;
-}
+
 .badges {
 	background-color: #fef3e4 !important;
 	display: inline-block;
