@@ -8,6 +8,20 @@ import { linkResolver } from '../../prismic-configuration';
 import dayjs from 'dayjs';
 dayjs().format();
 import countapi from 'countapi-js';
+import {
+	EmailShareButton,
+	FacebookShareButton,
+	LinkedinShareButton,
+	PinterestShareButton,
+	TwitterShareButton,
+	WhatsappShareButton,
+	FacebookIcon,
+	EmailIcon,
+	LinkedinIcon,
+	TwitterIcon,
+	WhatsappIcon,
+	PinterestIcon,
+} from 'react-share';
 
 const base = new Airtable({
 	apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY,
@@ -138,33 +152,40 @@ const BlogPostSection = ({ blogPost }) => {
 															<DetailsBox key={index} postBlock={item} />
 														))}
 												</div>
-												{/* <div className='post-footer d-md-flex flex-md-row justify-content-md-between align-items-center mt-8'>
-													<div>
-														<ul className='list-unstyled tag-list mb-0'>
-															<li>
-																<a
-																	href='#'
-																	className='btn btn-soft-ash btn-sm rounded-pill mb-0'>
-																	Still Life
-																</a>
-															</li>
-															<li>
-																<a
-																	href='#'
-																	className='btn btn-soft-ash btn-sm rounded-pill mb-0'>
-																	Urban
-																</a>
-															</li>
-															<li>
-																<a
-																	href='#'
-																	className='btn btn-soft-ash btn-sm rounded-pill mb-0'>
-																	Nature
-																</a>
-															</li>
-														</ul>
+												<div className='post-footer d-md-flex flex-md-row justify-content-md-between align-items-center mt-8'>
+													Share the article:
+													<div className='mt-2 mt-md-0'>
+														<FacebookShareButton
+															className='me-2'
+															url={`https://reversefactor.in/${uid}`}>
+															<FacebookIcon size={32} round={true} />
+														</FacebookShareButton>
+														<EmailShareButton
+															className='me-2'
+															url={`https://reversefactor.in/${uid}`}>
+															<EmailIcon size={32} round={true} />
+														</EmailShareButton>
+														<LinkedinShareButton
+															className='me-2'
+															url={`https://reversefactor.in/${uid}`}>
+															<LinkedinIcon size={32} round={true} />
+														</LinkedinShareButton>
+														<TwitterShareButton
+															className='me-2'
+															url={`https://reversefactor.in/${uid}`}>
+															<TwitterIcon size={32} round={true} />
+														</TwitterShareButton>
+														<PinterestShareButton
+															className='me-2'
+															url={`https://reversefactor.in/${uid}`}>
+															<PinterestIcon size={32} round={true} />
+														</PinterestShareButton>
+														<WhatsappShareButton
+															url={`https://reversefactor.in/${uid}`}>
+															<WhatsappIcon size={32} round={true} />
+														</WhatsappShareButton>
 													</div>
-												</div> */}
+												</div>
 											</article>
 										</div>
 

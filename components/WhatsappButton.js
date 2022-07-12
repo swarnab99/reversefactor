@@ -35,7 +35,7 @@ const WhatsappButton = ({ number, text }) => {
 					position: fixed;
 					z-index: 999;
 					bottom: 10px;
-					right: 10px;
+					left: 10px;
 					font-size: 30px;
 					display: flex;
 					justify-content: center;

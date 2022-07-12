@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from 'react';
 import Link from 'next/link';
 import {
 	FaFacebookF,
@@ -6,12 +7,63 @@ import {
 	FaLinkedin,
 	FaInstagram,
 	FaTwitter,
+	FaHeart,
 } from 'react-icons/fa';
+import Airtable from 'airtable';
+
+const base = new Airtable({
+	apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY,
+}).base(process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID);
 
 const Footer = () => {
+	const [formData, setFormData] = useState({
+		email: '',
+	});
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
+	const [success, setSuccess] = useState(false);
+
+	const handleChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		});
+		setError(null);
+		setSuccess(false);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setLoading(true);
+		try {
+			const data = await base('Newsletter').create([
+				{
+					fields: {
+						Email: formData.email,
+
+						Source: location.href,
+						Status: 'Todo',
+					},
+				},
+			]);
+
+			// console.log(data);
+
+			setFormData({
+				email: '',
+			});
+			setSuccess(true);
+			setLoading(false);
+		} catch (error) {
+			setError(error);
+			console.log(error);
+			setLoading(false);
+		}
+	};
+
 	return (
 		<footer className='bg-navy text-inverse mt-10'>
-			<div className='container pt-10 pt-md-12 pb-10 pb-md-12'>
+			<div className='container pt-10 pt-md-12 pb-10 pb-md-0'>
 				<div className='d-lg-flex flex-row align-items-lg-center'>
 					<h3 className='display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white'>
 						Join our mission by removing medicine from your life.
@@ -118,55 +170,124 @@ const Footer = () => {
 							<div className='newsletter-wrapper'>
 								<div id='mc_embed_signup2'>
 									<form
-										action='https://elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a'
-										method='post'
-										id='mc-embedded-subscribe-form2'
-										name='mc-embedded-subscribe-form'
-										className='validate dark-fields'
-										target='_blank'>
-										<div id='mc_embed_signup_scroll2'>
+										onSubmit={handleSubmit}
+										className='validate dark-fields'>
+										<div>
 											<div className='mc-field-group input-group form-floating'>
 												<input
+													name='email'
+													value={formData.email}
+													onChange={handleChange}
 													type='email'
-													value=''
-													name='EMAIL'
 													className='required email form-control'
 													placeholder='Email Address'
-													id='mce-EMAIL2'
+													required
 												/>
 												<label>Email Address</label>
 												<input
 													type='submit'
 													value='Join'
 													name='subscribe'
-													id='mc-embedded-subscribe2'
 													className='btn btn-primary'
 												/>
 											</div>
 											<div id='mce-responses2' className='clear'>
-												<div
-													className='response d-none'
-													id='mce-error-response2'></div>
-												<div
-													className='response d-none'
-													id='mce-success-response2'></div>
+												<div className='response' id='mce-success-response2'>
+													{error && (
+														<div className='col-lg-12 col-md-12 col-sm-12 mb-4'>
+															<p className='text-danger text-center h5'>
+																{error.message}
+															</p>
+														</div>
+													)}
+													{success && (
+														<div className='col-lg-12 col-md-12 col-sm-12 mb-4'>
+															<p className='text-success text-center h5'>
+																Thanks, you will receive updates from us.
+															</p>
+														</div>
+													)}
+												</div>
 											</div>
-											<div
-												style={{ position: 'absolute', left: '-5000px' }}
-												aria-hidden='true'>
-												<input
-													type='text'
-													name='b_ddc180777a163e0f9f66ee014_4b1bcfa0bc'
-													tabIndex='-1'
-													value=''
-												/>
-											</div>
+
 											<div className='clear'></div>
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
+					</div>
+					<div className='pt-12'>
+						<div className='text-center pb-2'>
+							<p>
+								Copyright © {new Date().getFullYear()} Reverse Factor{' '}
+								<span className='d-none d-md-inline px-1'>| </span>
+								<span className='d-block d-md-inline'>All rights reserved</span>
+							</p>
+						</div>
+
+						{/* ========== FAVFLY ========= */}
+						<div className='favfly'>
+							<div className='divider-icon m-0 mt-4 border-0 position-relative'>
+								<i className='fa color-rose'>
+									<FaHeart />
+								</i>
+							</div>
+							<a
+								target='_blank'
+								rel='noreferrer'
+								title='Best digital marketing company in kolkata'
+								href='https://favfly.com?ref=reversefactor.in'
+								className='container py-3 font-weight-bold d-block'>
+								Growing with Favfly
+							</a>
+						</div>
+
+						<style jsx>{`
+							.favfly {
+								letter-spacing: 1px;
+							}
+							.favfly a {
+								color: #35a146;
+							}
+							.divider-icon:before {
+								left: 0;
+							}
+							.divider-icon:before,
+							.divider-icon:after {
+								position: absolute;
+								top: 50%;
+								content: '';
+								border-top: 2px solid #4c4d50;
+								width: calc(50% - 30px);
+							}
+							.divider-icon i {
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								-webkit-transform: translate(-50%, -50%);
+								-ms-transform: translate(-50%, -50%);
+								transform: translate(-50%, -50%);
+								font-size: 18px;
+								color: #35a146;
+							}
+							.divider-icon:after {
+								right: 0;
+							}
+							.divider-icon:before,
+							.divider-icon:after {
+								position: absolute;
+								top: 50%;
+								content: '';
+								border-top: 2px solid #4c4d50;
+								width: calc(50% - 30px);
+							}
+							@media only screen and (min-width: 768px) {
+								.favfly {
+									text-align: center;
+								}
+							}
+						`}</style>
 					</div>
 				</div>
 			</div>
