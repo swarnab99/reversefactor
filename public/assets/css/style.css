@@ -22845,6 +22845,16 @@ blockquote.text-center.icon-top:before {
 	font-weight: 400;
 	padding-right: 0.2rem;
 }
+.post-content pre {
+	border-left: 0.15rem solid #34a14d;
+	padding-left: 1rem;
+	font-size: .85rem;
+	line-height: 1.7;
+	font-weight: 500;
+	margin-top: 2rem!important;
+	margin-bottom: 2rem!important;
+	white-space: normal;
+}
 .blog.single .post .tag-list li,
 .widget .tag-list li {
 	margin-top: 0;
