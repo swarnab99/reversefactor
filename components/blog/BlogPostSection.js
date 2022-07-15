@@ -36,7 +36,7 @@ const BlogPostSection = ({ blogPost }) => {
 	/* ===== COUNT & UPDATE NO. OF VIEWS ===== */
 	const [views, setViews] = useState(0);
 	useEffect(() => {
-		countapi.hit(`${process.env.PRISMIC_ID}.com`, uid).then((result) => {
+		countapi.hit(`${process.env.PRISMIC_ID}.in`, uid).then((result) => {
 			result?.value && setViews(result.value);
 		});
 	}, [uid]);

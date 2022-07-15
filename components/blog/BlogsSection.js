@@ -30,7 +30,7 @@ const BlogItem = ({ data }) => {
 	/* ===== COUNT & UPDATE NO. OF VIEWS ===== */
 	const [views, setViews] = useState(0);
 	useEffect(() => {
-		countapi.get(`${process.env.PRISMIC_ID}.com`, _meta?.uid).then((result) => {
+		countapi.get(`${process.env.PRISMIC_ID}.in`, _meta?.uid).then((result) => {
 			result?.value && setViews(result.value);
 		});
 	}, [_meta?.uid]);
