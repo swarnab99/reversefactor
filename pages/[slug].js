@@ -23,7 +23,7 @@ const BlogPost = ({ doc, blogPosts }) => {
 		<>
 			<SEO
 				doc={doc}
-				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.com/blog/${doc?.uid}`}
+				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/blog/${doc?.uid}`}
 			/>
 			<BlogPostSection blogPost={doc} />
 			<BlogsSection blogPosts={blogPosts} />
