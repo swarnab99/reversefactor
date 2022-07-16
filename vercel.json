@@ -1,0 +1,16 @@
+{
+	"redirects": [
+		{
+			"source": "/our-team",
+			"destination": "/about-reverse-factor"
+		},
+		{
+			"source": "/health-associates",
+			"destination": "/"
+		},
+		{
+			"source": "/diabetes-360",
+			"destination": "/plan/diabetes-reversal"
+		}
+	]
+}
