@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 
 			<Script
 				strategy='lazyOnload'
-				src={`https://www.googletagmanager.com/gtag/js?id=G-F1YWGEZZHD`}
+				src={`https://www.googletagmanager.com/gtag/js?id=G-JD621BMDZ9`}
 			/>
 			<Script id='google-analytics' strategy='lazyOnload'>
 				{`
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
 					function gtag(){dataLayer.push(arguments);}
 					gtag('js', new Date());
 
-					gtag('config', 'G-F1YWGEZZHD');
+					gtag('config', 'G-JD621BMDZ9');
 				`}
 			</Script>
 
