@@ -28,6 +28,20 @@ function MyApp({ Component, pageProps }) {
 				<Component {...pageProps} />
 			</Layout>
 
+			<Script
+				strategy='lazyOnload'
+				src={`https://www.googletagmanager.com/gtag/js?id=G-F1YWGEZZHD`}
+			/>
+			<Script id='google-analytics' strategy='lazyOnload'>
+				{`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+
+					gtag('config', 'G-F1YWGEZZHD');
+				`}
+			</Script>
+
 			<Script id='tawk.to' strategy='lazyOnload'>
 				{`var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 					(function(){
