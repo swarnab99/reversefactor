@@ -88,6 +88,9 @@ const ProductItem = ({ data, index, changeActive }) => {
             fontSize: "30px",
             color: "#fff",
             cursor: "pointer",
+            backgroundColor: "#000",
+            borderRadius: "50%",
+            border: "1px solid #000",
           }}
         />
         <a
