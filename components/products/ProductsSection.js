@@ -73,25 +73,13 @@ const ProductItem = ({ data, index, changeActive }) => {
     <div className="project item col-md-6 col-xl-3">
       <figure className="rounded mb-2">
         <img
+          style={{ cursor: "pointer" }}
+          onClick={() => changeActive(index)}
           src={
             image?.url ||
             "https://images.prismic.io/reversefactor/7f031a62-18d1-499e-93be-560e42bc4681_product_placeholder.png"
           }
           alt={image?.alt}
-        />
-        <BsFillInfoCircleFill
-          onClick={() => changeActive(index)}
-          style={{
-            position: "absolute",
-            top: "20px",
-            right: "30px",
-            fontSize: "30px",
-            color: "#fff",
-            cursor: "pointer",
-            backgroundColor: "#000",
-            borderRadius: "50%",
-            border: "1px solid #000",
-          }}
         />
         <a
           target="_blank"
@@ -102,7 +90,11 @@ const ProductItem = ({ data, index, changeActive }) => {
           Query on Whatsapp
         </a>
       </figure>
-      <div onClick={() => changeActive(index)} className="post-header">
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => changeActive(index)}
+        className="post-header"
+      >
         <h2 className="post-title h3 fs-22">{title[0]?.text}</h2>
         <p className="price">
           {mrp && (
