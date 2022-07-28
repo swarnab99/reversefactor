@@ -253,6 +253,7 @@ const Footer = ({ data }) => {
             <style jsx>{`
               .favfly {
                 letter-spacing: 1px;
+                text-align: center;
               }
               .favfly a {
                 color: #35a146;
@@ -288,11 +289,6 @@ const Footer = ({ data }) => {
                 content: "";
                 border-top: 2px solid #4c4d50;
                 width: calc(50% - 30px);
-              }
-              @media only screen and (min-width: 768px) {
-                .favfly {
-                  text-align: center;
-                }
               }
             `}</style>
           </div>
