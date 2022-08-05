@@ -6,15 +6,7 @@ import { SliceZone } from '../../slices';
 import SEO from '../../components/seo/SEO';
 import Footer from '../../components/footer/Footer';
 
-// import SecondaryHeroSection from '../../components/hero/SecondaryHeroSection';
-// import VideoFeaturesSection from '../../components/feature/VideoFeaturesSection';
-// import FeaturesSection from '../../components/feature/FeaturesSection';
-// import CtaSection from '../../components/cta/CtaSection';
-// import TestimonialsSections from '../../components/testimonial/TestimonialsSection';
-// import CtaCardSection from '../../components/cta/CtaCardSection';
-// import FaqSection from '../../components/faq/FaqSection';
-
-const ServicePage = ({ doc }) => {
+const ServicePage = ({ doc, footer }) => {
 	// ========== LOZAD INSTANTIATE ==========
 	useEffect(() => {
 		const observer = lozad('.lozad', {
@@ -31,9 +23,22 @@ const ServicePage = ({ doc }) => {
 				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/plan/${doc?.uid}`}
 			/>
 			<SliceZone sliceZone={doc.data.body} />
+			<Footer data={footer.data} />
 		</>
 	);
 };
+
+export async function getStaticPaths() {
+	const documents = await queryRepeatableDocuments(
+		(doc) => doc.type === 'service_page'
+	);
+	return {
+		paths: documents.map((doc) => {
+			return { params: { slug: doc.uid } };
+		}),
+		fallback: 'blocking',
+	};
+}
 
 export async function getStaticProps({
 	preview = null,
