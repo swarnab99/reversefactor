@@ -27,7 +27,7 @@ const ServicePage = ({ doc }) => {
 		<>
 			<SEO
 				doc={doc}
-				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.com/plan/${doc?.uid}`}
+				url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/plan/${doc?.uid}`}
 			/>
 			<SliceZone sliceZone={doc.data.body} />
 		</>
