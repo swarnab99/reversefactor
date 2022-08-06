@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress
@@ -13,6 +14,20 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
 	const Layout = Component.Layout || DefaultLayout;
+	// Facebook Pixel
+	useEffect(() => {
+		import('react-facebook-pixel')
+			.then((x) => x.default)
+			.then((ReactPixel) => {
+				ReactPixel.init('207243460594231'); // facebookPixelId
+				ReactPixel.pageView();
+
+				Router.events.on('routeChangeComplete', () => {
+					ReactPixel.pageView();
+				});
+			});
+	}, []);
+
 	return (
 		<>
 			<DefaultSeo
