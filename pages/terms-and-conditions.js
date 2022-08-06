@@ -5,7 +5,7 @@ import SEO from "../components/seo/SEO";
 import BlogPostSection from "../components/blog/BlogPostSection";
 import Footer from "../components/footer/Footer";
 
-const PrivacyPolicy = ({ doc, footer }) => {
+const TermsAndConditions = ({ doc, footer }) => {
   // console.log(doc);
   // ========== LOZAD INSTANTIATE ==========
   useEffect(() => {
@@ -20,7 +20,7 @@ const PrivacyPolicy = ({ doc, footer }) => {
     <>
       <SEO
         doc={doc}
-        url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/privacy-policy`}
+        url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/terms-and-conditions`}
       />
       <BlogPostSection blogPost={doc} />
       <Footer data={footer.data} />
@@ -32,7 +32,8 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
   const { ref } = previewData;
   const client = Client();
   const doc =
-    (await client.getSingle("privacy_policy", ref ? { ref } : null)) || {};
+    (await client.getSingle("terms_and_conditions", ref ? { ref } : null)) ||
+    {};
   const footer =
     (await client.getSingle("footer_section", ref ? { ref } : null)) || {};
 
@@ -52,4 +53,4 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
     revalidate: 60,
   };
 }
-export default PrivacyPolicy;
+export default TermsAndConditions;
