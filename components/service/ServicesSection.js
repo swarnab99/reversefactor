@@ -115,13 +115,13 @@ const ServiceItem = ({ data }) => {
           <div className="mb-2">
             <RichText render={details} serializeHyperlink={CustomLink} />
           </div>
-          {/* {link?.url && ( */}
-          <DocLink link={link}>
-            <span href="#" className="hover link-green">
-              View Plan
-            </span>
-          </DocLink>
-          {/* )} */}
+          {link?.uid && (
+            <DocLink link={link}>
+              <span href="#" className="hover link-green">
+                View Plan
+              </span>
+            </DocLink>
+          )}
         </div>
       </div>
     </div>
