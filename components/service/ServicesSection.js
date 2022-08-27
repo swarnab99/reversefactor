@@ -101,6 +101,7 @@ const BadgeItem = ({ title, color }) => {
 
 const ServiceItem = ({ data }) => {
   const { icon, title, details, link } = data;
+  // console.log(data);
   return (
     <div className="col-md-6 col-xl-3">
       <div className="card shadow-lg h-100">
@@ -114,13 +115,13 @@ const ServiceItem = ({ data }) => {
           <div className="mb-2">
             <RichText render={details} serializeHyperlink={CustomLink} />
           </div>
-          {link?.url && (
-            <DocLink link={link}>
-              <span href="#" className="hover link-green">
-                View Plan
-              </span>
-            </DocLink>
-          )}
+          {/* {link?.url && ( */}
+          <DocLink link={link}>
+            <span href="#" className="hover link-green">
+              View Plan
+            </span>
+          </DocLink>
+          {/* )} */}
         </div>
       </div>
     </div>
