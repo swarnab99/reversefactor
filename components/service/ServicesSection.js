@@ -106,11 +106,13 @@ const ServiceItem = ({ data }) => {
     <div className="col-md-6 col-xl-3">
       <div className="card shadow-lg h-100">
         <div className="card-body h-100">
-          <img
-            src={icon?.url}
-            alt={icon?.alt}
-            className="icon-svg icon-svg-lg text-green mb-3"
-          />
+          {icon?.url && (
+            <img
+              src={icon?.url}
+              alt={icon?.alt}
+              className="icon-svg icon-svg-lg text-green mb-3"
+            />
+          )}
           <h4>{title[0]?.text}</h4>
           <div className="mb-2">
             <RichText render={details} serializeHyperlink={CustomLink} />
