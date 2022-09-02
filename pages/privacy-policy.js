@@ -4,6 +4,7 @@ import { Client } from "../utils/prismicHelpers";
 import SEO from "../components/seo/SEO";
 import BlogPostSection from "../components/blog/BlogPostSection";
 import Footer from "../components/footer/Footer";
+import DynamicModal from "../components/modal/DynamicModal";
 
 const PrivacyPolicy = ({ doc, footer }) => {
   // console.log(doc);
@@ -24,6 +25,7 @@ const PrivacyPolicy = ({ doc, footer }) => {
       />
       <BlogPostSection blogPost={doc} />
       <Footer data={footer.data} />
+      <DynamicModal />
     </>
   );
 };

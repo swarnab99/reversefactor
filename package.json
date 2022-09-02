@@ -17,6 +17,7 @@
 		"apollo-link-prismic": "^1.1.1",
 		"countapi-js": "^1.0.2",
 		"dayjs": "^1.11.2",
+		"exit-intent": "^1.1.0",
 		"fslightbox-react": "^1.6.2-2",
 		"graphql": "^16.5.0",
 		"graphql-tag": "^2.12.6",

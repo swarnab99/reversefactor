@@ -7,6 +7,7 @@ import { SliceZone } from "../slices";
 import SEO from "../components/seo/SEO";
 import BlogsSection from "../components/blog/BlogsSection";
 import Footer from "../components/footer/Footer";
+import DynamicModal from "../components/modal/DynamicModal";
 
 const BlogsPage = ({ doc, footer, blogPosts }) => {
   // ========== LOZAD INSTANTIATE ==========
@@ -27,6 +28,7 @@ const BlogsPage = ({ doc, footer, blogPosts }) => {
       <SliceZone sliceZone={doc.data.body} />
       <BlogsSection blogPosts={blogPosts} />
       <Footer data={footer.data} />
+      <DynamicModal />
     </>
   );
 };
