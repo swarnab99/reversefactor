@@ -5,7 +5,7 @@ import { queryRepeatableDocuments } from "../../utils/queries";
 import { SliceZone } from "../../slices";
 import SEO from "../../components/seo/SEO";
 import Footer from "../../components/footer/Footer";
-import DynamicModal from "../components/modal/DynamicModal";
+import DynamicModal from "../../components/modal/DynamicModal";
 
 const ServicePage = ({ doc, footer }) => {
   // ========== LOZAD INSTANTIATE ==========
