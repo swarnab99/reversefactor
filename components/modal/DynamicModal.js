@@ -26,7 +26,7 @@ const DynamicModal = () => {
     } else {
       setTimeout(() => {
         setShowModal(true);
-      }, 5000);
+      }, 15000);
     }
   }, []);
 
