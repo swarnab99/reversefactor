@@ -39,7 +39,7 @@ const DynamicModal = () => {
               <div className="close-btn" onClick={() => setShowModal(false)}>
                 <AiOutlineClose />
               </div>
-              <Link className="" href="/contact">
+              <Link href="/contact">
                 <img
                   style={{ cursor: "pointer" }}
                   onClick={() => setShowModal(false)}
