@@ -41,6 +41,7 @@ const DynamicModal = () => {
               </div>
               <Link className="" href="/contact">
                 <img
+                  style={{ cursor: "pointer" }}
                   onClick={() => setShowModal(false)}
                   className="w-100"
                   src="https://images.prismic.io/reversefactor/5eedc8e5-fcd9-4be4-b09a-f7280251c5f7_have+query+modal.png?auto=compress,format"
