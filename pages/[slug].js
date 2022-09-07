@@ -8,6 +8,7 @@ import SEO from "../components/seo/SEO";
 import BlogPostSection from "../components/blog/BlogPostSection";
 import BlogsSection from "../components/blog/BlogsSection";
 import Footer from "../components/footer/Footer";
+import DynamicModal from "../components/modal/DynamicModal";
 
 const BlogPost = ({ doc, footer, blogPosts }) => {
   // console.log(doc);
@@ -29,6 +30,7 @@ const BlogPost = ({ doc, footer, blogPosts }) => {
       <BlogPostSection blogPost={doc} />
       <BlogsSection blogPosts={blogPosts} />
       <Footer data={footer.data} />
+      <DynamicModal />
     </>
   );
 };

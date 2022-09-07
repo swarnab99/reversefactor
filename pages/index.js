@@ -5,6 +5,7 @@ import PrismicClient from "../utils/prismicClient";
 import gql from "graphql-tag";
 import { SliceZone } from "../slices";
 import SEO from "../components/seo/SEO";
+import DynamicModal from "../components/modal/DynamicModal";
 
 import BlogsSection from "../components/blog/BlogsSection";
 import Footer from "../components/footer/Footer";
@@ -26,6 +27,7 @@ const IndexPage = ({ doc, footer, blogPosts }) => {
       <SliceZone sliceZone={doc.data.body} />
       <BlogsSection blogPosts={blogPosts} />
       <Footer data={footer.data} />
+      <DynamicModal />
     </>
   );
 };

@@ -4,6 +4,7 @@ import { Client } from "../utils/prismicHelpers";
 import { SliceZone } from "../slices";
 import SEO from "../components/seo/SEO";
 import Footer from "../components/footer/Footer";
+import DynamicModal from "../components/modal/DynamicModal";
 
 // import StoriesSection from '../components/testimonial/StoriesSection';
 
@@ -26,6 +27,7 @@ const ReversalStories = ({ doc, footer }) => {
       />
       <SliceZone sliceZone={doc.data.body} />
       <Footer data={footer.data} />
+      <DynamicModal />
     </>
   );
 };

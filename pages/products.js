@@ -4,6 +4,7 @@ import { Client } from "../utils/prismicHelpers";
 import { SliceZone } from "../slices";
 import SEO from "../components/seo/SEO";
 import Footer from "../components/footer/Footer";
+import DynamicModal from "../components/modal/DynamicModal";
 
 // import SecondaryHeroSection from '../components/hero/SecondaryHeroSection';
 // import ProductsSection from '../components/products/ProductsSection';
@@ -27,6 +28,7 @@ const ProductsPage = ({ doc, footer }) => {
       />
       <SliceZone sliceZone={doc.data.body} />
       <Footer data={footer.data} />
+      <DynamicModal />
     </>
   );
 };
