@@ -3,8 +3,8 @@ import { FiCheck } from 'react-icons/fi';
 import { DocLink } from '../../utils/prismicHelpers';
 
 const PricingSection = ({ slice }) => {
-	// console.log(slice);
-	const { heading, subheading } = slice?.primary;
+	console.log(slice);
+	const { heading, subheading, single_payment_type } = slice?.primary;
 	return (
 		<section className='wrapper bg-light'>
 			<div className='container pt-14 pt-md-16'>
@@ -27,7 +27,12 @@ const PricingSection = ({ slice }) => {
 
 					<div className='row gy-6 mt-3 mt-md-5'>
 						{slice?.items?.map((item, index) => (
-							<PricingItem key={index} data={item} index={index} />
+							<PricingItem
+								key={index}
+								data={item}
+								index={index}
+								single_payment_type={single_payment_type}
+							/>
 						))}
 					</div>
 				</div>
@@ -36,7 +41,7 @@ const PricingSection = ({ slice }) => {
 	);
 };
 
-const PricingItem = ({ data, index }) => {
+const PricingItem = ({ data, index, single_payment_type }) => {
 	const { title, price, details, button_link } = data;
 	return (
 		<div className={`col-md-6 col-lg-4 ${index == 1 ? 'popular' : ''}`}>
@@ -50,7 +55,9 @@ const PricingItem = ({ data, index }) => {
 						<div className='price price-show'>
 							<span className='price-currency'>₹</span>
 							<span className='price-value'>{price[0]?.text}</span>{' '}
-							<span className='price-duration'>mo</span>
+							{!single_payment_type && (
+								<span className='price-duration'>mo</span>
+							)}
 						</div>
 					</div>
 

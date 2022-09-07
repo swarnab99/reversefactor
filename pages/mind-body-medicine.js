@@ -30,7 +30,7 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 	const { ref } = previewData;
 	const client = Client();
 	const doc =
-		(await client.getSingle('mind-body-medicine', ref ? { ref } : null)) || {};
+		(await client.getSingle('mind_body_medicine', ref ? { ref } : null)) || {};
 	const footer =
 		(await client.getSingle('footer_section', ref ? { ref } : null)) || {};
 

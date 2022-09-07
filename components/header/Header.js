@@ -114,7 +114,7 @@ const Header = () => {
 
 					<div className='navbar-other ms-lg-4'>
 						<ul className='navbar-nav flex-row align-items-center ms-auto'>
-							<li className='nav-item d-none d-md-block'>
+							{/* <li className='nav-item d-none d-md-block'>
 								<a
 									href='https://api.whatsapp.com/send?phone=+917001848624&text=Hi,%20Reverse%20Factor. I want to schedule an appointment.'
 									target='_blank'
@@ -122,7 +122,7 @@ const Header = () => {
 									className='btn btn-sm btn-primary rounded'>
 									Get Appointment
 								</a>
-							</li>
+							</li> */}
 							<li className='nav-item d-lg-none'>
 								<button
 									className='hamburger offcanvas-nav-btn'
@@ -170,6 +170,11 @@ const MenuItem = ({ onClose }) => {
 				link='/services'
 				active={router.pathname == '/services'}
 			/>
+			{/* <LinkItem
+				text='Mind Body Medicine'
+				link='/mind-body-medicine'
+				active={router.pathname == '/mind-body-medicine'}
+			/> */}
 			<LinkItem
 				text='Presence'
 				link='/our-presence'
