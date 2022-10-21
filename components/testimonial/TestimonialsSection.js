@@ -97,7 +97,7 @@ const TestimonialItem = ({ data }) => {
                       {reversed_disease?.[0] && (
                         <div className="mt-4 d-flex flex-nowrap align-items-start justify-content-start">
                           <h6 className="me-2">Reversed:</h6>
-                          <div className="d-flex">
+                          <div className="d-flex flex-wrap">
                             {reversed_disease?.map((item, index) => (
                               <span
                                 key={index}
