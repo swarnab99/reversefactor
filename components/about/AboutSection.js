@@ -6,7 +6,6 @@ import "@splidejs/react-splide/css";
 import { useState } from "react";
 
 const AboutSection = ({ slice }) => {
-  console.log(slice);
   const [loop, setLoop] = useState("");
   const [arrow, setArrow] = useState(false);
   const {
