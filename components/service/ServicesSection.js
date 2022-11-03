@@ -41,7 +41,7 @@ const ServicesSection = ({ slice }) => {
             ))}
           </div>
         </div>
-        {diseases_col_1 && (
+        {diseases_col_1?.[0]?.text && (
           <div className="mt-12">
             <div className="mt-4  ">
               <h6 className="me-2">Other Reversal Programs:</h6>{" "}

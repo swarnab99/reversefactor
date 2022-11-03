@@ -37848,3 +37848,12 @@ footer.bg-dark.angled.upper-start:before {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* custom css  */
+.cta-heading p {
+	color: #353a43;
+}
+.cta-heading p strong{
+	color: #35a146;
+	font-weight: 400;
+}
