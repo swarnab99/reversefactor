@@ -3,10 +3,9 @@ import { RichText } from "prismic-reactjs";
 import { CustomLink, DocLink } from "../../utils/prismicHelpers";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AboutSection = ({ slice }) => {
-  const [loop, setLoop] = useState("");
   const [arrow, setArrow] = useState(false);
   const {
     heading,
@@ -23,10 +22,13 @@ const AboutSection = ({ slice }) => {
     swap,
   } = slice?.primary;
 
-  if (image1?.url) {
-    setLoop("loop");
-    setArrow(true);
-  }
+  useEffect(() => {
+    if (image1?.url) {
+      // setLoop(true);
+      setArrow(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className="container">
@@ -59,12 +61,12 @@ const AboutSection = ({ slice }) => {
             ></div>
             <Splide
               options={{
-                type: loop,
+                // type: loop
                 perPage: 1,
                 perMove: 1,
                 arrows: arrow,
                 pagination: arrow,
-                autoplay: true,
+                // autoplay: true,
                 interval: 2000,
                 lazyLoad: "nearby",
               }}
