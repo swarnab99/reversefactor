@@ -39,7 +39,10 @@ const AboutSection = ({ slice }) => {
       >
         <div className={full_width ? "col-lg-12" : "col-lg-6"}>
           <h2 className="display-4 mb-3">{heading[0]?.text}</h2>
-          <p className="lead fs-lg">{lead_text[0]?.text}</p>
+          {/* <div className="lead fs-lg">{lead_text[0]?.text}</div> */}
+          <div className="lead fs-lg">
+            <RichText render={lead_text} serializeHyperlink={CustomLink} />
+          </div>
           <div className="mb-6">
             <RichText render={description} serializeHyperlink={CustomLink} />
           </div>
