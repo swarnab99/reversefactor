@@ -35,7 +35,7 @@ const ServicesSection = ({ slice }) => {
             className="shape bg-dot primary rellax w-16 h-17"
             style={{ top: "-0.5rem", left: "-2.5rem", zIndex: 0 }}
           ></div>
-          <div className="row gx-md-5 gy-5 text-center">
+          <div className="row gx-md-5 gy-5 text-center justify-content-center">
             {slice?.items?.map((item, index) => (
               <ServiceItem key={index} data={item} />
             ))}
