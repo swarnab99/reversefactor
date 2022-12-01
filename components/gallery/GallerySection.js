@@ -98,8 +98,9 @@ const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
       <article
         style={{ cursor: "pointer" }}
         onClick={() => openLightboxOnSlide(index + 1)}
+        className="h-100"
       >
-        <div className="card">
+        <div className="card h-100">
           <figure className="card-img-top overlay overlay-1 position-relative">
             <img src={image?.url} alt={image?.alt} />
             <i>
