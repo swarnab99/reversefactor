@@ -8,6 +8,7 @@ const ServicesSection = ({ slice }) => {
   const {
     heading,
     subheading,
+    hide_button,
     diseases_col_1,
     diseases_col_2,
     diseases_col_3,
@@ -75,7 +76,7 @@ const ServicesSection = ({ slice }) => {
             </div>
           </div>
         )}
-        {!diseases_col_1 && (
+        {!diseases_col_1 && !hide_button && (
           <div className="text-center mt-5">
             <Link href="/services	">
               <a className="btn btn-outline-primary mt-2">
