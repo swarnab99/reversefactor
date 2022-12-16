@@ -124,7 +124,13 @@ const ServiceItem = ({ data, color, colorful_bg }) => {
   return (
     <div className="col-md-6 col-xl-3">
       <div className={`card shadow-lg h-100 ${colorful_bg ? color : ""}`}>
-        <div className="card-body h-100">
+        <div
+          className={`card-body h-100 ${
+            details?.[0]?.text
+              ? ""
+              : "d-flex justify-content-center align-items-center"
+          }`}
+        >
           {icon?.url && (
             <img
               src={icon?.url}
@@ -132,7 +138,9 @@ const ServiceItem = ({ data, color, colorful_bg }) => {
               className="icon-svg icon-svg-lg text-green mb-3"
             />
           )}
-          <h4>{title[0]?.text}</h4>
+          <h4 className={`${details?.[0]?.text ? "" : "mb-0"}`}>
+            {title[0]?.text}
+          </h4>
           {details?.[0]?.text && (
             <div className="mb-2">
               <RichText render={details} serializeHyperlink={CustomLink} />
