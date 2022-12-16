@@ -9,12 +9,25 @@ const ServicesSection = ({ slice }) => {
     heading,
     subheading,
     hide_button,
+    colorful_bg,
     diseases_col_1,
     diseases_col_2,
     diseases_col_3,
     diseases_col_4,
     diseases_col_5,
   } = slice?.primary;
+
+  const colors = [
+    "bg-pale-yellow",
+    "bg-pale-red",
+    "bg-pale-green",
+    "bg-pale-blue",
+    "bg-pale-orange",
+    "bg-pale-leaf",
+    "bg-pale-aqua",
+    "bg-pale-navy",
+  ];
+
   return (
     <section className="wrapper pt-14 bg-light">
       <div className="container">
@@ -38,7 +51,12 @@ const ServicesSection = ({ slice }) => {
           ></div>
           <div className="row gx-md-5 gy-5 text-center justify-content-center">
             {slice?.items?.map((item, index) => (
-              <ServiceItem key={index} data={item} />
+              <ServiceItem
+                key={index}
+                data={item}
+                color={colors[index]}
+                colorful_bg={colorful_bg}
+              />
             ))}
           </div>
         </div>
@@ -100,12 +118,12 @@ const BadgeItem = ({ title, color }) => {
   );
 };
 
-const ServiceItem = ({ data }) => {
+const ServiceItem = ({ data, color, colorful_bg }) => {
   const { icon, title, details, link } = data;
   // console.log(data);
   return (
     <div className="col-md-6 col-xl-3">
-      <div className="card shadow-lg h-100">
+      <div className={`card shadow-lg h-100 ${colorful_bg ? color : ""}`}>
         <div className="card-body h-100">
           {icon?.url && (
             <img
@@ -115,9 +133,11 @@ const ServiceItem = ({ data }) => {
             />
           )}
           <h4>{title[0]?.text}</h4>
-          <div className="mb-2">
-            <RichText render={details} serializeHyperlink={CustomLink} />
-          </div>
+          {details?.[0]?.text && (
+            <div className="mb-2">
+              <RichText render={details} serializeHyperlink={CustomLink} />
+            </div>
+          )}
           {link?.uid && (
             <DocLink link={link}>
               <span href="#" className="hover link-green">
