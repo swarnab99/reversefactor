@@ -103,9 +103,9 @@ const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
         <div className="card h-100">
           <figure className="card-img-top overlay overlay-1 position-relative">
             <img src={image?.url} alt={image?.alt} />
-            <i>
+            {/* <i>
               <FaPlay />
-            </i>
+            </i> */}
           </figure>
           <div className="card-body p-1 px-3">
             <div className="post-header">
