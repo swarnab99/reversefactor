@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import FsLightbox from "fslightbox-react";
-import { FaPlay } from "react-icons/fa";
+import { FiZoomIn } from "react-icons/fi";
 
 const GallerySection = ({ slice }) => {
   // console.log(slice);
@@ -92,7 +92,7 @@ const GallerySection = ({ slice }) => {
 };
 
 const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
-  const { image, title } = data;
+  const { image, title, video_link } = data;
   return (
     <div className="col-md-6 col-lg-3 px-4 mb-5">
       <article
@@ -103,9 +103,11 @@ const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
         <div className="card h-100">
           <figure className="card-img-top overlay overlay-1 position-relative">
             <img src={image?.url} alt={image?.alt} />
-            {/* <i>
-              <FaPlay />
-            </i> */}
+            {/* {video_link?.url  ( */}
+            <i>
+              <FiZoomIn />
+            </i>
+            {/* )} */}
           </figure>
           <div className="card-body p-1 px-3">
             <div className="post-header">
@@ -130,7 +132,7 @@ const GalleryItem = ({ data, index, openLightboxOnSlide }) => {
       </article>
       <style jsx>{`
         .card-img-top i {
-          font-size: 22px;
+          font-size: 40px;
           position: absolute;
           top: 0;
           width: 100%;
