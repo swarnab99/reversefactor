@@ -40,7 +40,7 @@ const TestimonialsSections = ({ slice }) => {
 };
 
 const TestimonialItem = ({ data }) => {
-  const { image, name, review, location, reversed_disease } = data;
+  const { image, name, title1, review, location, reversed_disease } = data;
   const colors = [
     "bg-pale-yellow",
     "bg-pale-red",
@@ -71,6 +71,9 @@ const TestimonialItem = ({ data }) => {
           <div className="swiper">
             <div className="swiper-wrapper">
               <div className="swiper-slide">
+                {title1?.[0]?.text && (
+                  <h3 className="text-start">{title1?.[0]?.text}</h3>
+                )}
                 <blockquote className="icon fs-lg client-story">
                   <div
                     className={`text-start details mb-4 ${
