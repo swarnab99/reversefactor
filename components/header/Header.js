@@ -171,6 +171,11 @@ const MenuItem = ({ onClose }) => {
         active={router.pathname == "/reversal-stories"}
       />
       <LinkItem
+        text="Mind Body Medicine"
+        link="/mind-body-medicine"
+        active={router.pathname == "/mind-body-medicine"}
+      />
+      <LinkItem
         text="Services"
         link="/services"
         active={router.pathname == "/services"}
@@ -190,11 +195,6 @@ const MenuItem = ({ onClose }) => {
         text="Contact"
         link="/contact"
         active={router.pathname == "/contact"}
-      />
-      <LinkItem
-        text="Mind Body Medicine"
-        link="/mind-body-medicine"
-        active={router.pathname == "/mind-body-medicine"}
       />
     </ul>
   );
