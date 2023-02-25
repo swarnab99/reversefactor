@@ -31,12 +31,12 @@ function SEO({ doc, url }) {
             height: 150,
             alt: featured_image?.alt || title?.[0]?.text,
           },
-          // {
-          // 	url: featured_image?.thumbnail?.url,
-          // 	width: 150,
-          // 	height: 150,
-          // 	alt: featured_image?.alt || title?.[0]?.text,
-          // },
+          {
+            url: featured_image?.thumbnail?.url,
+            width: 150,
+            height: 150,
+            alt: featured_image?.alt || title?.[0]?.text,
+          },
         ],
         site_name: process.env.NEXT_PUBLIC_PRISMIC_ID,
       }}
