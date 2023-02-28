@@ -10,58 +10,9 @@ import {
   FaTwitter,
   FaHeart,
 } from "react-icons/fa";
-import Airtable from "airtable";
-
-const base = new Airtable({
-  apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY,
-}).base(process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID);
+import NewsletterForm from "../newsletter/NewsletterForm";
 
 const Footer = ({ data }) => {
-  const [formData, setFormData] = useState({
-    email: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    setError(null);
-    setSuccess(false);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const data = await base("Newsletter").create([
-        {
-          fields: {
-            Email: formData.email,
-
-            Source: location.href,
-            Status: "Todo",
-          },
-        },
-      ]);
-
-      // console.log(data);
-
-      setFormData({
-        email: "",
-      });
-      setSuccess(true);
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
   return (
     <footer className="bg-navy text-inverse mt-10">
       <div className="container pt-10 pt-md-12 pb-10 pb-md-0">
@@ -174,51 +125,7 @@ const Footer = ({ data }) => {
               </p>
               <div className="newsletter-wrapper">
                 <div id="mc_embed_signup2">
-                  <form
-                    onSubmit={handleSubmit}
-                    className="validate dark-fields"
-                  >
-                    <div>
-                      <div className="mc-field-group input-group form-floating">
-                        <input
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          type="email"
-                          className="required email form-control"
-                          placeholder="Email Address"
-                          required
-                        />
-                        <label>Email Address</label>
-                        <input
-                          type="submit"
-                          value="Join"
-                          name="subscribe"
-                          className="btn btn-primary"
-                        />
-                      </div>
-                      <div id="mce-responses2" className="clear">
-                        <div className="response" id="mce-success-response2">
-                          {error && (
-                            <div className="col-lg-12 col-md-12 col-sm-12 mb-4">
-                              <p className="text-danger text-center h5">
-                                {error.message}
-                              </p>
-                            </div>
-                          )}
-                          {success && (
-                            <div className="col-lg-12 col-md-12 col-sm-12 mb-4">
-                              <p className="text-success text-center h5">
-                                Thanks, you will receive updates from us.
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="clear"></div>
-                    </div>
-                  </form>
+                  <NewsletterForm />
                 </div>
               </div>
             </div>
