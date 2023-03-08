@@ -37857,3 +37857,7 @@ footer.bg-dark.angled.upper-start:before {
 	color: #35a146;
 	font-weight: 400;
 }
+
+.video-feature-item p{
+	margin-bottom: 0 !important;
+}
