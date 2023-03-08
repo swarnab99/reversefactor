@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import FsLightbox from "fslightbox-react";
 import { RichText } from "prismic-reactjs";
-import { linkResolver } from "../../prismic-configuration";
+import { CustomLink } from "../../utils/prismicHelpers";
 
 const VideoFeaturesSection = ({ slice }) => {
   // console.log(slice);
@@ -88,7 +88,7 @@ const VideoFeatureItem = ({ data }) => {
       </div>
       <div className="video-feature-item">
         <h4 className="mb-1">{title[0]?.text}</h4>
-        <RichText render={details} linkResolver={linkResolver} />
+        <RichText render={details} serializeHyperlink={CustomLink} />
       </div>
     </div>
   );
