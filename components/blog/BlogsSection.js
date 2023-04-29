@@ -48,9 +48,9 @@ const BlogItem = ({ data }) => {
               />
             </a>
           </Link>
-          <figcaption>
+          {/* <figcaption>
             <h5 className="from-top mb-0">Read More</h5>
-          </figcaption>
+          </figcaption> */}
         </figure>
         <div className="post-header">
           <h2 className="post-title h3 mt-1 mb-3">
