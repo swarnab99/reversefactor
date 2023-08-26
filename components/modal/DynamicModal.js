@@ -104,11 +104,10 @@ const DynamicModal = () => {
               <div className="row box-container">
                 <div
                   className="d-none d-lg-flex justify-content-center align-items-center col-lg-6 p-0"
-                  style={{ lineHeight: "0", overflow: "hidden" }}
-                >
+                  style={{ lineHeight: "0", overflow: "hidden" }}>
                   <img
-                    className="w-100"
-                    src="/assets/img/QueryPopup.png"
+                    className="w-100 lozad"
+                    data-src="https://images.prismic.io/reversefactor/fd2cd6a0-bf87-4b83-90aa-6ef7739756a6_QueryPopup.png?auto=compress,format"
                     alt="QueryPopup"
                   />
                 </div>
@@ -168,8 +167,7 @@ const DynamicModal = () => {
                       <div className="col-12">
                         <button
                           type="submit"
-                          className="btn btn-primary w-100 mt-3"
-                        >
+                          className="btn btn-primary w-100 mt-3">
                           {loading ? "Sending..." : "Send"}
                         </button>
                       </div>
