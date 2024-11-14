@@ -6,7 +6,7 @@ import SEO from "../components/seo/SEO";
 
 import Footer from "../components/footer/Footer";
 
-const MindBodyMedicinePage = ({ doc, footer }) => {
+const JourneyToOnenessPage = ({ doc, footer }) => {
   // console.log(blogPosts);
   // ========== LOZAD INSTANTIATE ==========
   useEffect(() => {
@@ -21,7 +21,7 @@ const MindBodyMedicinePage = ({ doc, footer }) => {
     <>
       <SEO
         doc={doc}
-        url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/mind-body-medicine`}
+        url={`https://${process.env.NEXT_PUBLIC_PRISMIC_ID}.in/journey-to-oneness`}
       />
       <SliceZone sliceZone={doc.data.body} />
       <Footer data={footer.data} />
@@ -54,4 +54,4 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
   };
 }
 
-export default MindBodyMedicinePage;
+export default JourneyToOnenessPage;

@@ -171,9 +171,9 @@ const MenuItem = ({ onClose }) => {
         active={router.pathname == "/reversal-stories"}
       />
       <LinkItem
-        text="Mind Body Medicine"
-        link="/mind-body-medicine"
-        active={router.pathname == "/mind-body-medicine"}
+        text="Journey To Oneness"
+        link="/journey-to-oneness"
+        active={router.pathname == "/journey-to-oneness"}
       />
       <LinkItem
         text="Services"

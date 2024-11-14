@@ -83,6 +83,10 @@
     {
       "source": "/privacy",
       "destination": "/privacy-policy"
+    },
+    {
+      "source": "/mind-body-medicine",
+      "destination": "/journey-to-oneness"
     }
   ]
 }
